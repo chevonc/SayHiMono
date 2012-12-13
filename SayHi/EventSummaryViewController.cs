@@ -18,6 +18,11 @@ namespace SayHi
 		{
 		}
 
+		public EventSummaryMode Mode {
+			get;
+			set;
+		}
+
 		partial void eventConfirmNo (MonoTouch.UIKit.UIButton sender)
 		{
 			NavigationController.PopViewControllerAnimated (true);
@@ -57,6 +62,16 @@ namespace SayHi
 		{
 			base.ViewDidLoad ();
 			this.Title = "Event Summary";
+			if (Mode == EventSummaryMode.CheckIn)
+			{
+				noButton.Hidden = yesButton.Hidden = true;
+				checkInButton.Hidden = false;
+			}
+			else
+			{
+				noButton.Hidden = yesButton.Hidden = false;
+				checkInButton.Hidden = true;
+			}
 			// Perform any additional setup after loading the view, typically from a nib.
 		}
 		

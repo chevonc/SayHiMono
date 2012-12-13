@@ -20,11 +20,20 @@ namespace SayHi
 		[Outlet]
 		MonoTouch.UIKit.UILabel m_eventSummaryLabel { get; set; }
 
-		[Action ("eventConfirmYes:")]
-		partial void eventConfirmYes (MonoTouch.UIKit.UIButton sender);
+		[Outlet]
+		MonoTouch.UIKit.UIButton noButton { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIButton yesButton { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIButton checkInButton { get; set; }
 
 		[Action ("eventConfirmNo:")]
 		partial void eventConfirmNo (MonoTouch.UIKit.UIButton sender);
+
+		[Action ("eventConfirmYes:")]
+		partial void eventConfirmYes (MonoTouch.UIKit.UIButton sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -41,6 +50,21 @@ namespace SayHi
 			if (m_eventSummaryLabel != null) {
 				m_eventSummaryLabel.Dispose ();
 				m_eventSummaryLabel = null;
+			}
+
+			if (noButton != null) {
+				noButton.Dispose ();
+				noButton = null;
+			}
+
+			if (yesButton != null) {
+				yesButton.Dispose ();
+				yesButton = null;
+			}
+
+			if (checkInButton != null) {
+				checkInButton.Dispose ();
+				checkInButton = null;
 			}
 		}
 	}

@@ -9,17 +9,4 @@
 
 @implementation SayHiViewController
 
-@synthesize signedInUserNameLabel = _signedInUserNameLabel;
-@synthesize signedInHeaderLabel = _signedInHeaderLabel;
-@synthesize m_eventCodeBox = _m_eventCodeBox;
-
-- (IBAction)onRegisterClicked:(UIButton *)sender {
-}
-
-- (IBAction)textChanged:(UITextField *)sender {
-}
-
-- (IBAction)onGoButtonClicked:(UIButton *)sender {
-}
-
 @end
