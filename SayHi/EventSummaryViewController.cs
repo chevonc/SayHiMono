@@ -29,7 +29,7 @@ namespace SayHi
 			//else go to event details
 			if (!false)//not logged in
 			{
-				PerformSegue (SayHiConstants.ESVCtoRVCSegue, this);
+				PerformSegue (SayHiConstants.ESVCtoRUVCSegue, this);
 			}
 		}
 
@@ -38,6 +38,10 @@ namespace SayHi
 			base.PrepareForSegue (segue, sender);
 			RegisterUserViewController vc = (RegisterUserViewController)segue.DestinationViewController;
 			vc.SourceSegue = segue.Identifier;
+			if (segue.Identifier == SayHiConstants.ESVCtoRUVCSegue)
+			{
+				vc.Mode = RegistrationMode.EventDetailDestination;
+			}
 		}
 		
 		public override void DidReceiveMemoryWarning ()

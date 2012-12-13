@@ -55,6 +55,22 @@ namespace SayHi
 			m_eventCodeBox.EndEditing (true);
 		}
 
+		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
+		{
+			base.PrepareForSegue (segue, sender);
+			RegisterUserViewController vc = (RegisterUserViewController)segue.DestinationViewController;
+			vc.SourceSegue = segue.Identifier;
+			if (segue.Identifier == SayHiConstants.ESVCtoRUVCSegue)
+			{
+				vc.Mode = RegistrationMode.HomePageDestination;
+			}
+		}
+
+		partial void onRegisterClicked (MonoTouch.UIKit.UIButton sender)
+		{
+			PerformSegue (SayHiConstants.SHVCtoRUVC, this);
+		}
+
 		partial void textChanged (MonoTouch.UIKit.UITextField sender)
 		{
 
