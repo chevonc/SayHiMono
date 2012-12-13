@@ -22,4 +22,7 @@
 - (IBAction)eventConfirmYes:(UIButton *)sender {
 }
 
+- (IBAction)eventCheckInClicked:(UIButton *)sender {
+}
+
 @end

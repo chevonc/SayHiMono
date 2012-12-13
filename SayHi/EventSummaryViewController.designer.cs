@@ -34,6 +34,9 @@ namespace SayHi
 
 		[Action ("eventConfirmYes:")]
 		partial void eventConfirmYes (MonoTouch.UIKit.UIButton sender);
+
+		[Action ("eventCheckInClicked:")]
+		partial void eventCheckInClicked (MonoTouch.UIKit.UIButton sender);
 		
 		void ReleaseDesignerOutlets ()
 		{

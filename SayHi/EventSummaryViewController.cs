@@ -74,6 +74,11 @@ namespace SayHi
 			}
 			// Perform any additional setup after loading the view, typically from a nib.
 		}
+
+		partial void eventCheckInClicked (MonoTouch.UIKit.UIButton sender)
+		{
+
+		}
 		
 		public override void ViewDidUnload ()
 		{
