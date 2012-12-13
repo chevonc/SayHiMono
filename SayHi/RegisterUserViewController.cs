@@ -50,6 +50,7 @@ namespace SayHi
 				//take back to detail screen of event
 			}
 			else
+			if (Mode == RegistrationMode.HomePageDestination)
 			{
 				//take to home screen
 				SayHiBootStrapper.SetCurrentUser (obj);

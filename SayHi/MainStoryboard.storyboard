@@ -82,7 +82,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="otL-rj-gqo"/>
                     <connections>
-                        <outlet property="backgroundImage" destination="EVt-Ks-ppG" id="0EI-m7-GLR"/>
                         <outlet property="m_eventCodeBox" destination="nux-rX-WyZ" id="ExG-ns-JXh"/>
                         <outlet property="signedInHeaderLabel" destination="8Eb-l9-BeZ" id="dfb-3r-f40"/>
                         <outlet property="signedInUserNameLabel" destination="bCa-1d-Qld" id="ELW-VF-vfs"/>

@@ -58,10 +58,10 @@ namespace SayHi
 		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
 		{
 			base.PrepareForSegue (segue, sender);
-			RegisterUserViewController vc = (RegisterUserViewController)segue.DestinationViewController;
-			vc.SourceSegue = segue.Identifier;
 			if (segue.Identifier == SayHiConstants.ESVCtoRUVCSegue)
 			{
+				RegisterUserViewController vc = (RegisterUserViewController)segue.DestinationViewController;
+				vc.SourceSegue = segue.Identifier;
 				vc.Mode = RegistrationMode.HomePageDestination;
 			}
 		}
