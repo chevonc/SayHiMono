@@ -1,0 +1,275 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DBB228000000000000000000 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2977FB000000000000000000 /* UIKit.framework */; };
+		D64171800000000000000000 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1FE4A000000000000000000 /* MapKit.framework */; };
+		9EC7C0800000000000000000 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA8499000000000000000000 /* Foundation.framework */; };
+		674E0F800000000000000000 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 830AE8000000000000000000 /* CoreGraphics.framework */; };
+		22625D000000000000000000 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E1F35800000000000000000 /* MainStoryboard.storyboard */; };
+		CF2BD3800000000000000000 /* RegisterUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAE8AC000000000000000000 /* RegisterUserViewController.xib */; };
+		97B222800000000000000000 /* basic_splash.png in Resources */ = {isa = PBXBuildFile; fileRef = B36EFB000000000000000000 /* basic_splash.png */; };
+		603871800000000000000000 /* basic_splash_inverted.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF54A000000000000000000 /* basic_splash_inverted.png */; };
+		28BEC0800000000000000000 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 447B99000000000000000000 /* icon.png */; };
+		F1450F800000000000000000 /* basic_splash copy.png in Resources */ = {isa = PBXBuildFile; fileRef = D01E80000000000000000000 /* basic_splash copy.png */; };
+		B9CB5E800000000000000000 /* basic_splash_inverted copy.png in Resources */ = {isa = PBXBuildFile; fileRef = D58837000000000000000000 /* basic_splash_inverted copy.png */; };
+		8251AD800000000000000000 /* sayhi-logo_red_347_100.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E0E86000000000000000000 /* sayhi-logo_red_347_100.png */; };
+		4AD7FC800000000000000000 /* sayhi-logo_white_347_100.png in Resources */ = {isa = PBXBuildFile; fileRef = 6694D5000000000000000000 /* sayhi-logo_white_347_100.png */; };
+		135E4B800000000000000000 /* AppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = 2F1B24000000000000000000 /* AppDelegate.h */; };
+		88AE11000000000000000000 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A46AE9800000000000000000 /* AppDelegate.m */; };
+		513460000000000000000000 /* SayHiViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 6CF138800000000000000000 /* SayHiViewController.h */; };
+		FDFDD6800000000000000000 /* SayHiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BAAF000000000000000000 /* SayHiViewController.m */; };
+		C68425800000000000000000 /* EventSummaryViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = E240FE000000000000000000 /* EventSummaryViewController.h */; };
+		734D9C000000000000000000 /* EventSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0A74800000000000000000 /* EventSummaryViewController.m */; };
+		3BD3EB000000000000000000 /* RegisterUserViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 5790C3800000000000000000 /* RegisterUserViewController.h */; };
+		E89D61800000000000000000 /* RegisterUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A3A0000000000000000000 /* RegisterUserViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CFE50E000000000000000000 /* SayHi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "SayHi.app"; path = "SayHi.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2977FB000000000000000000 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; name = "UIKit.framework"; path = "System/Library/Frameworks/UIKit.framework"; sourceTree = SDKROOT; };
+		F1FE4A000000000000000000 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; name = "MapKit.framework"; path = "System/Library/Frameworks/MapKit.framework"; sourceTree = SDKROOT; };
+		BA8499000000000000000000 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; name = "Foundation.framework"; path = "System/Library/Frameworks/Foundation.framework"; sourceTree = SDKROOT; };
+		830AE8000000000000000000 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; name = "CoreGraphics.framework"; path = "System/Library/Frameworks/CoreGraphics.framework"; sourceTree = SDKROOT; };
+		3E1F35800000000000000000 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "MainStoryboard.storyboard"; path = "MainStoryboard.storyboard"; sourceTree = "<group>"; };
+		EAE8AC000000000000000000 /* RegisterUserViewController.xib */ = {isa = PBXFileReference; name = "RegisterUserViewController.xib"; path = "Resources/RegisterUserViewController.xib"; sourceTree = "<group>"; };
+		B36EFB000000000000000000 /* basic_splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "basic_splash.png"; path = "basic_splash.png"; sourceTree = "<group>"; };
+		7BF54A000000000000000000 /* basic_splash_inverted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "basic_splash_inverted.png"; path = "basic_splash_inverted.png"; sourceTree = "<group>"; };
+		447B99000000000000000000 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon.png"; path = "icon.png"; sourceTree = "<group>"; };
+		D01E80000000000000000000 /* basic_splash copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "basic_splash copy.png"; path = "basic_splash copy.png"; sourceTree = "<group>"; };
+		D58837000000000000000000 /* basic_splash_inverted copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "basic_splash_inverted copy.png"; path = "basic_splash_inverted copy.png"; sourceTree = "<group>"; };
+		9E0E86000000000000000000 /* sayhi-logo_red_347_100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sayhi-logo_red_347_100.png"; path = "sayhi-logo_red_347_100.png"; sourceTree = "<group>"; };
+		6694D5000000000000000000 /* sayhi-logo_white_347_100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sayhi-logo_white_347_100.png"; path = "sayhi-logo_white_347_100.png"; sourceTree = "<group>"; };
+		2F1B24000000000000000000 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "AppDelegate.h"; path = "AppDelegate.h"; sourceTree = "<group>"; };
+		A46AE9800000000000000000 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "AppDelegate.m"; path = "AppDelegate.m"; sourceTree = "<group>"; };
+		6CF138800000000000000000 /* SayHiViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "SayHiViewController.h"; path = "SayHiViewController.h"; sourceTree = "<group>"; };
+		19BAAF000000000000000000 /* SayHiViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "SayHiViewController.m"; path = "SayHiViewController.m"; sourceTree = "<group>"; };
+		E240FE000000000000000000 /* EventSummaryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "EventSummaryViewController.h"; path = "EventSummaryViewController.h"; sourceTree = "<group>"; };
+		8F0A74800000000000000000 /* EventSummaryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "EventSummaryViewController.m"; path = "EventSummaryViewController.m"; sourceTree = "<group>"; };
+		5790C3800000000000000000 /* RegisterUserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "RegisterUserViewController.h"; path = "RegisterUserViewController.h"; sourceTree = "<group>"; };
+		45A3A0000000000000000000 /* RegisterUserViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "RegisterUserViewController.m"; path = "RegisterUserViewController.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		765221000000000000000000 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBB228000000000000000000 /* UIKit.framework in Frameworks */,
+				D64171800000000000000000 /* MapKit.framework in Frameworks */,
+				9EC7C0800000000000000000 /* Foundation.framework in Frameworks */,
+				674E0F800000000000000000 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		907E85800000000000000000 = {
+			isa = PBXGroup;
+			children = (
+				EA1172800000000000000000 /* SayHi */,
+				E3B50F000000000000000000 /* Frameworks */,
+				3D47FC000000000000000000 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3D47FC000000000000000000 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CFE50E000000000000000000 /* SayHi.app */,
+			);
+			name = "Products";
+			sourceTree = "<group>";
+		};
+		E3B50F000000000000000000 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2977FB000000000000000000 /* UIKit.framework */,
+				F1FE4A000000000000000000 /* MapKit.framework */,
+				BA8499000000000000000000 /* Foundation.framework */,
+				830AE8000000000000000000 /* CoreGraphics.framework */,
+			);
+			name = "Frameworks";
+			sourceTree = "<group>";
+		};
+		EA1172800000000000000000 /* SayHi */ = {
+			isa = PBXGroup;
+			children = (
+				2F1B24000000000000000000 /* AppDelegate.h */,
+				D01E80000000000000000000 /* basic_splash copy.png */,
+				B36EFB000000000000000000 /* basic_splash.png */,
+				D58837000000000000000000 /* basic_splash_inverted copy.png */,
+				7BF54A000000000000000000 /* basic_splash_inverted.png */,
+				E240FE000000000000000000 /* EventSummaryViewController.h */,
+				447B99000000000000000000 /* icon.png */,
+				3E1F35800000000000000000 /* MainStoryboard.storyboard */,
+				5790C3800000000000000000 /* RegisterUserViewController.h */,
+				9E0E86000000000000000000 /* sayhi-logo_red_347_100.png */,
+				6694D5000000000000000000 /* sayhi-logo_white_347_100.png */,
+				6CF138800000000000000000 /* SayHiViewController.h */,
+				278BB7C00000000000000000 /* Resources */,
+				2AB9E9800000000000000000 /* Supporting Files */,
+			);
+			name = "SayHi";
+			sourceTree = "<group>";
+		};
+		278BB7C00000000000000000 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EAE8AC000000000000000000 /* RegisterUserViewController.xib */,
+			);
+			name = "Resources";
+			sourceTree = "<group>";
+		};
+		2AB9E9800000000000000000 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A46AE9800000000000000000 /* AppDelegate.m */,
+				8F0A74800000000000000000 /* EventSummaryViewController.m */,
+				45A3A0000000000000000000 /* RegisterUserViewController.m */,
+				19BAAF000000000000000000 /* SayHiViewController.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4D2EF4C00000000000000000 /* SayHi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F39C07C00000000000000000 /* Build configuration list for PBXNativeTarget "SayHi" */;
+			buildPhases = (
+				231B97800000000000000000 /* Sources */,
+				765221000000000000000000 /* Frameworks */,
+				3ED870000000000000000000 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SayHi";
+			productName = "SayHi";
+			productReference = CFE50E000000000000000000 /* SayHi.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B9E1EC000000000000000000 /* Project object */ = {
+			isa = PBXProject;
+			attributes = { };
+			buildConfigurationList = A0657E400000000000000000 /* Build configuration list for PBXProject "SayHi" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 907E85800000000000000000;
+			productRefGroup = 3D47FC000000000000000000 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4D2EF4C00000000000000000 /* SayHi */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3ED870000000000000000000 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22625D000000000000000000 /* MainStoryboard.storyboard in Resources */,
+				CF2BD3800000000000000000 /* RegisterUserViewController.xib in Resources */,
+				97B222800000000000000000 /* basic_splash.png in Resources */,
+				603871800000000000000000 /* basic_splash_inverted.png in Resources */,
+				28BEC0800000000000000000 /* icon.png in Resources */,
+				F1450F800000000000000000 /* basic_splash copy.png in Resources */,
+				B9CB5E800000000000000000 /* basic_splash_inverted copy.png in Resources */,
+				8251AD800000000000000000 /* sayhi-logo_red_347_100.png in Resources */,
+				4AD7FC800000000000000000 /* sayhi-logo_white_347_100.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		231B97800000000000000000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				135E4B800000000000000000 /* AppDelegate.h in Sources */,
+				88AE11000000000000000000 /* AppDelegate.m in Sources */,
+				513460000000000000000000 /* SayHiViewController.h in Sources */,
+				FDFDD6800000000000000000 /* SayHiViewController.m in Sources */,
+				C68425800000000000000000 /* EventSummaryViewController.h in Sources */,
+				734D9C000000000000000000 /* EventSummaryViewController.m in Sources */,
+				3BD3EB000000000000000000 /* RegisterUserViewController.h in Sources */,
+				E89D61800000000000000000 /* RegisterUserViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7CAE84800000000000000000 /* MonoTouch */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				SDKROOT = iphoneos;
+			};
+			name = MonoTouch;
+		};
+		986B5D000000000000000000 /* MonoTouch */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				PRODUCT_NAME = "SayHi";
+				WRAPPER_EXTENSION = app;
+			};
+			name = MonoTouch;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A0657E400000000000000000 /* Build configuration list for PBXProject "SayHi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CAE84800000000000000000 /* MonoTouch */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = MonoTouch;
+		};
+		F39C07C00000000000000000 /* Build configuration list for PBXNativeTarget "SayHi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				986B5D000000000000000000 /* MonoTouch */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = MonoTouch;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B9E1EC000000000000000000 /* Project object */;
+}
