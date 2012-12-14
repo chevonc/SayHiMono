@@ -146,5 +146,6 @@
     <BundleResource Include="Resources\sayhi-logo_white_347_100.png" />
     <BundleResource Include="Resources\sayHiMatch.png" />
     <BundleResource Include="Resources\placeholder_125_125.png" />
+    <BundleResource Include="Resources\event_placeholder_125_125.png" />
   </ItemGroup>
 </Project>

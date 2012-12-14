@@ -9,11 +9,13 @@
 
 @implementation EventSummaryViewController
 
+@synthesize m_dateLabel = _m_dateLabel;
 @synthesize m_eventImage = _m_eventImage;
 @synthesize m_eventNameLabel = _m_eventNameLabel;
 @synthesize m_eventSummaryLabel = _m_eventSummaryLabel;
 @synthesize noButton = _noButton;
 @synthesize yesButton = _yesButton;
+@synthesize m_questionLabel = _m_questionLabel;
 @synthesize checkInButton = _checkInButton;
 
 - (IBAction)eventConfirmNo:(UIButton *)sender {

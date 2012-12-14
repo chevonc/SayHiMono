@@ -90,13 +90,22 @@ namespace SayHi
 
 		void Setup ()
 		{
+			if (CurrentEvent != null)
+			{
+				m_eventSummaryLabel.Text = CurrentEvent.Summary;
+				m_dateLabel.Text = CurrentEvent.Date;
+				m_eventNameLabel.Text = CurrentEvent.Name;
+
+			}
 			if (Mode == EventSummaryMode.Normal)
 			{
+				m_questionLabel.Hidden = false;
 				noButton.Hidden = yesButton.Hidden = false;
 				checkInButton.Hidden = true;
 			}
 			else
 			{
+				m_questionLabel.Hidden = true;
 				noButton.Hidden = yesButton.Hidden = true;
 				checkInButton.Hidden = false;
 			}

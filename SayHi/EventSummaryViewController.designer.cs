@@ -12,6 +12,9 @@ namespace SayHi
 	partial class EventSummaryViewController
 	{
 		[Outlet]
+		MonoTouch.UIKit.UILabel m_dateLabel { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIImageView m_eventImage { get; set; }
 
 		[Outlet]
@@ -27,6 +30,9 @@ namespace SayHi
 		MonoTouch.UIKit.UIButton yesButton { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UILabel m_questionLabel { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton checkInButton { get; set; }
 
 		[Action ("eventConfirmNo:")]
@@ -40,6 +46,11 @@ namespace SayHi
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (m_dateLabel != null) {
+				m_dateLabel.Dispose ();
+				m_dateLabel = null;
+			}
+
 			if (m_eventImage != null) {
 				m_eventImage.Dispose ();
 				m_eventImage = null;
@@ -63,6 +74,11 @@ namespace SayHi
 			if (yesButton != null) {
 				yesButton.Dispose ();
 				yesButton = null;
+			}
+
+			if (m_questionLabel != null) {
+				m_questionLabel.Dispose ();
+				m_questionLabel = null;
 			}
 
 			if (checkInButton != null) {

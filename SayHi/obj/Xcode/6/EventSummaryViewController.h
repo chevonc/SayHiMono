@@ -12,13 +12,17 @@
 
 
 @interface EventSummaryViewController : UIViewController {
+	UILabel *_m_dateLabel;
 	UIImageView *_m_eventImage;
 	UILabel *_m_eventNameLabel;
 	UILabel *_m_eventSummaryLabel;
 	UIButton *_noButton;
 	UIButton *_yesButton;
+	UILabel *_m_questionLabel;
 	UIButton *_checkInButton;
 }
+
+@property (nonatomic, retain) IBOutlet UILabel *m_dateLabel;
 
 @property (nonatomic, retain) IBOutlet UIImageView *m_eventImage;
 
@@ -29,6 +33,8 @@
 @property (nonatomic, retain) IBOutlet UIButton *noButton;
 
 @property (nonatomic, retain) IBOutlet UIButton *yesButton;
+
+@property (nonatomic, retain) IBOutlet UILabel *m_questionLabel;
 
 @property (nonatomic, retain) IBOutlet UIButton *checkInButton;
 

@@ -15,7 +15,13 @@
 	UIActivityIndicatorView *_busyIndicator;
 	UILabel *_m_topCaption;
 	UILabel *_m_bottomCaption;
-	UIImageView *_m_placeHolderImage;
+	UILabel *_m_toLabel;
+	UIImageView *_m_matchedUsersImage;
+	UILabel *_m_matchedUsersName;
+	UILabel *_m_matchedUsersSummary;
+	UILabel *_m_matchedUsersInterest1;
+	UILabel *_m_matchedUsersInterest2;
+	UIButton *_m_placeHolderImageButton;
 }
 
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *busyIndicator;
@@ -24,12 +30,20 @@
 
 @property (nonatomic, retain) IBOutlet UILabel *m_bottomCaption;
 
-@property (nonatomic, retain) IBOutlet UIImageView *m_placeHolderImage;
-@property (retain, nonatomic) IBOutlet UILabel *m_toLabel;
-@property (retain, nonatomic) IBOutlet UIImageView *m_matchedUsersImage;
-@property (retain, nonatomic) IBOutlet UILabel *m_matchedUsersName;
-@property (retain, nonatomic) IBOutlet UILabel *m_matchedUsersSummary;
-@property (retain, nonatomic) IBOutlet UILabel *m_matchedUsersInterest1;
-@property (retain, nonatomic) IBOutlet UILabel *m_matchedUsersInterest2;
+@property (nonatomic, retain) IBOutlet UILabel *m_toLabel;
+
+@property (nonatomic, retain) IBOutlet UIImageView *m_matchedUsersImage;
+
+@property (nonatomic, retain) IBOutlet UILabel *m_matchedUsersName;
+
+@property (nonatomic, retain) IBOutlet UILabel *m_matchedUsersSummary;
+
+@property (nonatomic, retain) IBOutlet UILabel *m_matchedUsersInterest1;
+
+@property (nonatomic, retain) IBOutlet UILabel *m_matchedUsersInterest2;
+
+@property (nonatomic, retain) IBOutlet UIButton *m_placeHolderImageButton;
+
+- (IBAction)m_onMatchedUserButtonClicked:(UIButton *)sender;
 
 @end

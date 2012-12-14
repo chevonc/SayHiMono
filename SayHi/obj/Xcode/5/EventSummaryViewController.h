@@ -19,6 +19,7 @@
 	UIButton *_yesButton;
 	UIButton *_checkInButton;
 }
+@property (retain, nonatomic) IBOutlet UILabel *m_dateLabel;
 
 @property (nonatomic, retain) IBOutlet UIImageView *m_eventImage;
 
@@ -29,6 +30,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *noButton;
 
 @property (nonatomic, retain) IBOutlet UIButton *yesButton;
+@property (retain, nonatomic) IBOutlet UILabel *m_questionLabel;
 
 @property (nonatomic, retain) IBOutlet UIButton *checkInButton;
 

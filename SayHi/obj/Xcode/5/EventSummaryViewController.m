@@ -25,4 +25,9 @@
 - (IBAction)eventCheckInClicked:(UIButton *)sender {
 }
 
+- (void)dealloc {
+    [_m_dateLabel release];
+    [_m_questionLabel release];
+    [super dealloc];
+}
 @end

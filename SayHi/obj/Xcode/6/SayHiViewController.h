@@ -12,21 +12,6 @@
 
 
 @interface SayHiViewController : UIViewController {
-	UILabel *_signedInUserNameLabel;
-	UILabel *_signedInHeaderLabel;
-	UITextField *_m_eventCodeBox;
 }
-
-@property (nonatomic, retain) IBOutlet UILabel *signedInUserNameLabel;
-
-@property (nonatomic, retain) IBOutlet UILabel *signedInHeaderLabel;
-
-@property (nonatomic, retain) IBOutlet UITextField *m_eventCodeBox;
-
-- (IBAction)onRegisterClicked:(UIButton *)sender;
-
-- (IBAction)textChanged:(UITextField *)sender;
-
-- (IBAction)onGoButtonClicked:(UIButton *)sender;
 
 @end
