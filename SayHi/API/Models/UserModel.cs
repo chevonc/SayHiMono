@@ -14,15 +14,10 @@ namespace SayHi.API.Models
 		{
 
 		}
-		public string EventCode {
+		public string Code {
 			get;
 			set;
 
-		}
-
-		public string Id {
-			get;
-			set;
 		}
 
 		public string Name {

@@ -97,7 +97,7 @@ namespace SayHi
 			}
 			SayHiHelper sh = new SayHiHelper ();
 			sh.OnCheckIntoEventCompleted += HandleOnCheckIntoEventCompleted;
-			sh.CheckIntoEvent (SayHiBootStrapper.CurrentUser.ID, CurrentEvent.EventCode);
+			sh.CheckIntoEvent (SayHiBootStrapper.CurrentUser.ID, CurrentEvent.Code);
 		}
 
 		void HandleOnCheckIntoEventCompleted (ResponseBase obj)
@@ -109,7 +109,7 @@ namespace SayHi
 			}
 			else
 			{
-				UIAlertView error = new UIAlertView ("Error", string.Format ("Can't Check-in with event code: {0}", CurrentEvent.EventCode), null, "OK", null);
+				UIAlertView error = new UIAlertView ("Error", string.Format ("Can't Check-in with event code: {0}", CurrentEvent.Code), null, "OK", null);
 				error.Show ();
 			}
 		}

@@ -31,14 +31,25 @@ namespace SayHi
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+			busyIndicator.StartAnimating ();
 			StartGettingMatch ();
 			// Perform any additional setup after loading the view, typically from a nib.
 		}
 
-		private static void StartGettingMatch ()
+		private void StartGettingMatch ()
 		{
 			SayHiHelper sh = new SayHiHelper ();
-			//sh.CheckIntoEvent
+			sh.OnMatchUserCompleted += HandleOnMatchUserCompleted;
+			sh.MatchUser (SayHiBootStrapper.CurrentUser.ID, SayHiBootStrapper.CurrentEvent.Code);
+		}
+
+		void HandleOnMatchUserCompleted (UserModel obj)
+		{
+			busyIndicator.StopAnimating ();
+			busyIndicator.Hidden = true;
+			m_bottomCaption.Hidden = m_topCaption.Hidden = true;
+			m_placeHolderImage.Hidden = true;
+
 		}
 		
 		public override void ViewDidUnload ()

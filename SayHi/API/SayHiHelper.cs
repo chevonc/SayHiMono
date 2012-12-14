@@ -21,6 +21,7 @@ namespace SayHi.API
 		public event Action<ResponseBase> OnCheckIntoEventCompleted;
 		public event Action<List<Event>> OnGetEventsCompleted;
 		public event Action<ResponseBase> OnCreateEventCompleted;
+		public event Action<UserModel> OnMatchUserCompleted;
 		public const string APIBaseURL = "http://say-hi.herokuapp.com/api/";
 		public const string APIVersionPath = "v1/";
 		public const string RegisterUserPath = "registerUser/";
@@ -29,6 +30,7 @@ namespace SayHi.API
 		public const string CheckInUserPath = "event/addUser/";
 		public const string GetEventsPath = "event/?format=json";
 		public const string CreateEventPath = "event/setEvent/";
+		public const string MatchUserPath = ""; //TODO: fill in match user path
 		private const string JSONBeginObject = "_[_";
 		private const string JSONEndObject = "_]_";
 
@@ -209,7 +211,7 @@ namespace SayHi.API
 								else
 								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "event_code"))
 								{
-									ret.EventCode = jtr.ReadAsString ();
+									ret.Code = jtr.ReadAsString ();
 								}
 								else
 								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "name"))
@@ -380,7 +382,47 @@ namespace SayHi.API
 			};
 			syrc.SendRestRequest ();
 		}
+		public void MatchUser (string userId, string eventCode)
+		{
+			string json = ParamsToJSON ("userid", userId, "event_code", eventCode);
 
+			SayHiRestClient syrc = new SayHiRestClient (SayHiRestClient.HTTPPOSTMETHOD, CreateEndpointURL (MatchUserPath), json);
+			syrc.OnRestCallCompleted += (RestResult obj) => 
+			{
+				UserModel ret = null;
+
+				if (!obj.IsSuccess)
+				{
+					ret = new UserModel (obj.IsSuccess, obj.Result);
+				}
+				else
+				{
+					try
+					{
+						ret = new UserModel (true);
+
+						using (JsonTextReader jtr = new JsonTextReader(new StringReader(obj.Result)))
+						{
+
+							while (jtr.Read())
+							{
+
+							}
+						}
+					}
+					catch (Exception e)
+					{
+						ret = new UserModel (false, GenerateParseErrorMessage (e));
+					}
+				}
+
+				SafeRaiseEvent (OnMatchUserCompleted, ret);
+
+			};
+			syrc.SendRestRequest ();
+
+		
+		}
 		bool JsonKeyMatches (JsonTextReader jtr, JsonToken token, string key)
 		{
 			bool ret = jtr.TokenType == token && CompareStrings (jtr, key);
