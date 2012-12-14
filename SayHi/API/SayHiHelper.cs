@@ -149,7 +149,13 @@ namespace SayHi.API
 								{
 									ret.ID = jtr.ReadAsString ();
 								}
+
+
+
 							}
+
+							ret.InterestOne = SayHiBootStrapper.GenerateMockInterest ();
+							ret.InterestTwo = SayHiBootStrapper.GenerateMockInterest (ret.InterestOne ?? "");
 						}
 					}
 					catch (Exception e)
@@ -233,6 +239,11 @@ namespace SayHi.API
 								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "venue"))
 								{
 									ret.Venue = jtr.ReadAsString ();
+								}
+								else
+								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "organizer"))
+								{
+									ret.Organizer = jtr.ReadAsString ();
 								}
 							}
 						}
@@ -383,6 +394,7 @@ namespace SayHi.API
 			};
 			syrc.SendRestRequest ();
 		}
+
 		public void MatchUser (string userId, string eventCode)
 		{
 			string json = ParamsToJSON ("userid", userId, "event_code", eventCode);
@@ -407,8 +419,33 @@ namespace SayHi.API
 
 							while (jtr.Read())
 							{
-
+								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "match_name"))
+								{
+									string name = jtr.ReadAsString ();
+									if (name != null)
+									{
+										string[] vals = name.Split (' ');
+										ret.FirstName = vals [0];
+										if (vals.Length > 1)
+										{
+											ret.LastName = vals [1];
+										}
+									}
+								}
+								else
+								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "match_summary"))
+								{
+									ret.Summary = jtr.ReadAsString ();
+								}
+								else
+								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "username"))
+								{
+									ret.Summary = jtr.ReadAsString ();
+								}
 							}
+
+							ret.InterestOne = SayHiBootStrapper.GenerateMockInterest ();
+							ret.InterestTwo = SayHiBootStrapper.GenerateMockInterest (ret.InterestOne);
 						}
 					}
 					catch (Exception e)
@@ -424,6 +461,7 @@ namespace SayHi.API
 
 		
 		}
+
 		bool JsonKeyMatches (JsonTextReader jtr, JsonToken token, string key)
 		{
 			bool ret = jtr.TokenType == token && CompareStrings (jtr, key);
@@ -507,6 +545,8 @@ namespace SayHi.API
 				&& token != JsonToken.StartArray && token != JsonToken.StartConstructor
 				&& token != JsonToken.StartObject;
 		}
+
+
 
 		/* Request Skeleton
 		 * 			string json = ParamsToJSON (...);

@@ -13,12 +13,7 @@ namespace SayHi
 		public SayHiViewController (IntPtr handle) : base (handle)
 		{
 		}
-		
-		public Event CurrentEvent {
-			get;
-			private set;
-		}
-		
+
 		public override void DidReceiveMemoryWarning ()
 		{
 			// Releases the view if it doesn't have a superview.
@@ -35,6 +30,7 @@ namespace SayHi
 			if (SayHiBootStrapper.CurrentUser != null)
 			{
 				signedInHeaderLabel.Hidden = false;
+				m_signedInUserButton.Hidden = false;
 				m_signedInUserButton.TitleLabel.Text = SayHiBootStrapper.CurrentUser.FirstName + " " + SayHiBootStrapper.CurrentUser.LastName;
 			}
 			else
@@ -52,7 +48,6 @@ namespace SayHi
 		{
 			
 			base.ViewDidLoad ();//"sayhi1m,pp";
-			this.CurrentEvent = null;
 			this.Title = "Welcome!";
 			this.View.AddGestureRecognizer (new UITapGestureRecognizer (OnViewTouchUp));
 			//Setup ();
@@ -70,7 +65,7 @@ namespace SayHi
 		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
 		{
 			base.PrepareForSegue (segue, sender);
-			if (segue.Identifier == SayHiConstants.ESVCtoRUVCSegue)
+			if (segue.Identifier == SayHiConstants.SHVCtoRUVC)
 			{
 				RegisterUserViewController vc = (RegisterUserViewController)segue.DestinationViewController;
 				vc.SourceSegue = segue.Identifier;
@@ -80,8 +75,8 @@ namespace SayHi
 			if (segue.Identifier == SayHiConstants.SHVCtoESVCSegue)
 			{
 				EventSummaryViewController vc = (EventSummaryViewController)segue.DestinationViewController;
-				vc.Mode = EventSummaryMode.Normal;
-				vc.CurrentEvent = this.CurrentEvent;
+				vc.Mode = SayHiBootStrapper.CurrentUser == null ? EventSummaryMode.Normal : EventSummaryMode.CheckIn;
+				vc.CurrentEvent = SayHiBootStrapper.CurrentEvent;
 			}
 			else
 			if (segue.Identifier == SayHiConstants.SHVCtoUSVC)
@@ -123,8 +118,7 @@ namespace SayHi
 		
 		void HandleOnGetEventInfoCompleted (SayHi.API.Models.Event obj)
 		{
-			this.CurrentEvent = obj;
-			
+			SayHiBootStrapper.SetCurrentEvent (obj);
 			if (obj.IsSucess)
 			{
 				this.InvokeOnMainThread (

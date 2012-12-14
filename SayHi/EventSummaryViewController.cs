@@ -59,6 +59,7 @@ namespace SayHi
 				RegisterUserViewController vc = (RegisterUserViewController)segue.DestinationViewController;
 				vc.SourceSegue = segue.Identifier;
 				vc.Mode = RegistrationMode.EventDetailDestination;
+				vc.CallingEventVC = this;
 			}
 			else
 			if (segue.Identifier == SayHiConstants.ESVCtoUMVC)
@@ -80,6 +81,14 @@ namespace SayHi
 		{
 			base.ViewDidLoad ();
 			this.Title = "Event Summary";
+			if (CurrentEvent != null)
+			{
+				m_eventSummaryLabel.Text = CurrentEvent.Summary;
+				m_dateLabel.Text = CurrentEvent.Date;
+				m_eventNameLabel.Text = CurrentEvent.Name;
+				m_organizerLabel.Text = CurrentEvent.Organizer;
+				m_addressLabel.Text = CurrentEvent.Address;
+			}
 			//TODO: load all data from CurrentEvent property
 
 
@@ -90,13 +99,7 @@ namespace SayHi
 
 		void Setup ()
 		{
-			if (CurrentEvent != null)
-			{
-				m_eventSummaryLabel.Text = CurrentEvent.Summary;
-				m_dateLabel.Text = CurrentEvent.Date;
-				m_eventNameLabel.Text = CurrentEvent.Name;
-				m_organizerLabel.Text = CurrentEvent.Organizer;
-			}
+
 			if (Mode == EventSummaryMode.Normal)
 			{
 				m_questionLabel.Hidden = false;
@@ -126,6 +129,7 @@ namespace SayHi
 			{
 				return;
 			}
+
 			SayHiHelper sh = new SayHiHelper ();
 
 			if (Mode == EventSummaryMode.CheckIn)

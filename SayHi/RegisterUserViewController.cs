@@ -41,6 +41,7 @@ namespace SayHi
 
 		partial void OnSubmitRegistrationClicked (MonoTouch.UIKit.UIButton sender)
 		{
+
 			SayHiHelper sh = new SayHi.API.SayHiHelper ();
 			sh.OnRegisterUserCompleted += HandleOnRegisterUserCompleted;
 			sh.RegisterUser (emailAddressTextField.Text, passwordTextField.Text, firstNameTextField.Text,
@@ -50,25 +51,37 @@ namespace SayHi
 
 		void HandleOnRegisterUserCompleted (UserModel obj)
 		{
-			if (Mode == RegistrationMode.EventDetailDestination)
+
+			if (!obj.IsSucess)
 			{
-				if (CallingEventVC != null)
-				{
-					CallingEventVC.Mode = EventSummaryMode.CheckIn;
-				}
-				//take back to detail screen of event
-				//override prepare for segue so that i can show checkin button
-				//PerformSegue(SayHiConstants.)
+				SayHiBootStrapper.ShowAlertMessage ("Error", "Cannot register. Be sure that you did not already sign up for an account");
 			}
 			else
-			if (Mode == RegistrationMode.HomePageDestination)
 			{
-				//take to home screen
 				SayHiBootStrapper.SetCurrentUser (obj);
-				InvokeOnMainThread (delegate
+				if (Mode == RegistrationMode.EventDetailDestination)
 				{
-					NavigationController.PopToRootViewController (true);
-				});
+					if (CallingEventVC != null)
+					{
+						CallingEventVC.Mode = EventSummaryMode.CheckIn;
+					}
+					InvokeOnMainThread (delegate
+					{
+						NavigationController.PopViewControllerAnimated (true);
+					});
+					//take back to detail screen of event
+					//override prepare for segue so that i can show checkin button
+					//PerformSegue(SayHiConstants.)
+				}
+				else
+				if (Mode == RegistrationMode.HomePageDestination)
+				{
+					//take to home screen
+					InvokeOnMainThread (delegate
+					{
+						NavigationController.PopToRootViewController (true);
+					});
+				}
 			}
 		}
 
@@ -84,6 +97,8 @@ namespace SayHi
 		{
 			base.ViewDidLoad ();
 			this.View.AddGestureRecognizer (new UITapGestureRecognizer (OnViewTouchUp));
+			interest1TextField.Text = SayHiBootStrapper.GenerateMockInterest ();
+			interest2TextField.Text = SayHiBootStrapper.GenerateMockInterest (interest1TextField.Text);
 			// Perform any additional setup after loading the view, typically from a nib.
 		}
 
