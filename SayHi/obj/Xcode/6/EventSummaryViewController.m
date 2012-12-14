@@ -9,6 +9,7 @@
 
 @implementation EventSummaryViewController
 
+@synthesize m_organizerLabel = _m_organizerLabel;
 @synthesize m_dateLabel = _m_dateLabel;
 @synthesize m_eventImage = _m_eventImage;
 @synthesize m_eventNameLabel = _m_eventNameLabel;

@@ -12,6 +12,9 @@ namespace SayHi
 	partial class EventSummaryViewController
 	{
 		[Outlet]
+		MonoTouch.UIKit.UILabel m_organizerLabel { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UILabel m_dateLabel { get; set; }
 
 		[Outlet]
@@ -46,6 +49,11 @@ namespace SayHi
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (m_organizerLabel != null) {
+				m_organizerLabel.Dispose ();
+				m_organizerLabel = null;
+			}
+
 			if (m_dateLabel != null) {
 				m_dateLabel.Dispose ();
 				m_dateLabel = null;

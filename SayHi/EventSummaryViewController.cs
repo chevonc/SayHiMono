@@ -95,7 +95,7 @@ namespace SayHi
 				m_eventSummaryLabel.Text = CurrentEvent.Summary;
 				m_dateLabel.Text = CurrentEvent.Date;
 				m_eventNameLabel.Text = CurrentEvent.Name;
-
+				m_organizerLabel.Text = CurrentEvent.Organizer;
 			}
 			if (Mode == EventSummaryMode.Normal)
 			{

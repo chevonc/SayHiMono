@@ -483,17 +483,10 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Going: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XMe-Cx-oar">
-                                <rect key="frame" x="128" y="68" width="60" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Organizer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MTo-dh-ofx">
+                                <rect key="frame" x="128" y="76" width="56" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Organized by: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MTo-dh-ofx">
-                                <rect key="frame" x="128" y="89" width="114" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -556,6 +549,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Amd-LW-FBv">
+                                <rect key="frame" x="192" y="77" width="121" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.8191719890510949" green="0.1333333333" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -566,6 +566,7 @@
                         <outlet property="m_eventImage" destination="ixp-T4-ZEL" id="WVQ-pp-5o2"/>
                         <outlet property="m_eventNameLabel" destination="6TP-e9-YAn" id="ip4-tw-sn1"/>
                         <outlet property="m_eventSummaryLabel" destination="Eck-ST-V0D" id="IBK-4z-XG3"/>
+                        <outlet property="m_organizerLabel" destination="Amd-LW-FBv" id="Src-Yb-d4l"/>
                         <outlet property="m_questionLabel" destination="ujc-UH-R1F" id="Vxr-Fg-AZm"/>
                         <outlet property="noButton" destination="OQD-cu-sje" id="DYM-C3-Qze"/>
                         <outlet property="yesButton" destination="ay0-0x-phl" id="d90-5D-eYC"/>
@@ -615,6 +616,7 @@
                 <relationship kind="outlet" name="m_eventImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="m_eventNameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="m_eventSummaryLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="m_organizerLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="m_questionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="noButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="yesButton" candidateClass="UIButton"/>
@@ -635,15 +637,6 @@
         </class>
         <class className="SayHiViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SayHiViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onGoButtonClicked:" candidateClass="UIButton"/>
-                <relationship kind="action" name="onRegisterClicked:" candidateClass="UIButton"/>
-                <relationship kind="action" name="onViewSignedInUser:" candidateClass="UIButton"/>
-                <relationship kind="action" name="textChanged:" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="m_eventCodeBox" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="m_signedInUserButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="signedInHeaderLabel" candidateClass="UILabel"/>
-            </relationships>
         </class>
         <class className="UserMatchingViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UserMatchingViewController.h"/>

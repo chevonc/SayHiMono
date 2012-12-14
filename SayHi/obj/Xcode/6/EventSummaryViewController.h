@@ -12,6 +12,7 @@
 
 
 @interface EventSummaryViewController : UIViewController {
+	UILabel *_m_organizerLabel;
 	UILabel *_m_dateLabel;
 	UIImageView *_m_eventImage;
 	UILabel *_m_eventNameLabel;
@@ -21,6 +22,8 @@
 	UILabel *_m_questionLabel;
 	UIButton *_checkInButton;
 }
+
+@property (nonatomic, retain) IBOutlet UILabel *m_organizerLabel;
 
 @property (nonatomic, retain) IBOutlet UILabel *m_dateLabel;
 
