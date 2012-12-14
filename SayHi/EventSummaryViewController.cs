@@ -149,7 +149,11 @@ namespace SayHi
 			//take to sayhi screen
 			if (obj.IsSucess)
 			{
-				PerformSegue (SayHiConstants.ESVCtoUMVC, this);
+				InvokeOnMainThread (delegate
+				{
+					PerformSegue (SayHiConstants.ESVCtoUMVC, this);
+				});
+
 			}
 			else
 			{

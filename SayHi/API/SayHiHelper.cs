@@ -49,7 +49,7 @@ namespace SayHi.API
 		}
 
 		public void RegisterUser (string username, string password, string firstName, string lastName, string emailAddress, string dob = "", 
-		                         string summary = "", string interest1 = "", string interest2 = "", string interest3 = "")
+		                         string summary = "awesome summery", string interest1 = "", string interest2 = "", string interest3 = "")
 		{
 			string json = ParamsToJSON ("dob", dob, "summary", summary, "user", SayHiHelper.JSONBeginObject, "email", emailAddress,
 			                           "first_name", firstName, "last_name", lastName, "username", username, "password", password,
@@ -262,7 +262,7 @@ namespace SayHi.API
 	
 		public void CheckIntoEvent (string userId, string eventCode)
 		{
-			string json = ParamsToJSON ("userid", userId, "event_code");
+			string json = ParamsToJSON ("user_id", userId, "event_code", eventCode);
 			SayHiRestClient syrc = new SayHiRestClient (SayHiRestClient.HTTPPOSTMETHOD, CreateEndpointURL (CheckInUserPath), json);
 			syrc.OnRestCallCompleted += (RestResult obj) => 
 			{
@@ -303,7 +303,7 @@ namespace SayHi.API
 					}
 				}
 
-				SafeRaiseEvent (OnRegisterUserCompleted, ret);
+				SafeRaiseEvent (OnCheckIntoEventCompleted, ret);
 
 			};
 			syrc.SendRestRequest ();
@@ -337,7 +337,7 @@ namespace SayHi.API
 					}
 				}
 				
-				SafeRaiseEvent (OnRegisterUserCompleted, ret);
+				SafeRaiseEvent (OnGetEventsCompleted, ret);
 				
 			};
 			syrc.SendRestRequest ();

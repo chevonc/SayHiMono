@@ -45,7 +45,7 @@ namespace SayHi
 			SayHiHelper sh = new SayHi.API.SayHiHelper ();
 			sh.OnRegisterUserCompleted += HandleOnRegisterUserCompleted;
 			sh.RegisterUser (emailAddressTextField.Text, passwordTextField.Text, firstNameTextField.Text,
-			                lastNameTextField.Text, emailAddressTextField.Text, "2012-12-12", "", interest1TextField.Text,
+			                lastNameTextField.Text, emailAddressTextField.Text, "2012-12-12", "awesome summary!!!!", interest1TextField.Text,
 			                interest2TextField.Text);
 		}
 
@@ -54,7 +54,12 @@ namespace SayHi
 
 			if (!obj.IsSucess)
 			{
-				SayHiBootStrapper.ShowAlertMessage ("Error", "Cannot register. Be sure that you did not already sign up for an account");
+
+				InvokeOnMainThread (
+					delegate
+				{
+					SayHiBootStrapper.ShowAlertMessage ("Error", "Cannot register. Be sure that you did not already sign up for an account");
+				});
 			}
 			else
 			{

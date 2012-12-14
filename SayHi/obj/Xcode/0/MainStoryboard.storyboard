@@ -324,7 +324,6 @@
                         <outlet property="m_matchedUsersInterest2" destination="hi6-uT-tXl" id="C0x-Zz-fBt"/>
                         <outlet property="m_matchedUsersName" destination="rgU-ko-PTe" id="Esn-Hx-SRZ"/>
                         <outlet property="m_matchedUsersSummary" destination="py0-B2-YYu" id="BNq-1x-z88"/>
-                        <outlet property="m_placeHolderImage" destination="REk-kU-e3J" id="OL4-VY-ByS"/>
                         <outlet property="m_placeHolderImageButton" destination="dos-Rw-0jh" id="usG-qZ-hYR"/>
                         <outlet property="m_toLabel" destination="wqv-ne-FWc" id="LFe-tQ-U1o"/>
                         <outlet property="m_topCaption" destination="boq-p4-S6X" id="J6p-cw-Qbv"/>
