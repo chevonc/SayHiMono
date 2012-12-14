@@ -48,6 +48,7 @@ namespace SayHi
 			if (Mode == RegistrationMode.EventDetailDestination)
 			{
 				//take back to detail screen of event
+				//override prepare for segue so that i can show checkin button
 			}
 			else
 			if (Mode == RegistrationMode.HomePageDestination)

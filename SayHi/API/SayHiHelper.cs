@@ -17,12 +17,14 @@ namespace SayHi.API
 
 		public event Action<UserModel> OnRegisterUserCompleted;
 		public event Action<Event> OnGetEventInfoCompleted;
+		public event Action<ResponseBase> OnCheckIntoEventCompleted;
 
 		public const string APIBaseURL = "http://say-hi.herokuapp.com/api/";
 		public const string APIVersionPath = "v1/";
 		public const string RegisterUserPath = "registerUser/";
 		public const string GetEventInfoPath = "event/getEvent/";
 		public const string LoginUserPath = "getUserInfo/login/";
+		public const string CheckInUserPath = "event/addUser/";
 		private const string JSONBeginObject = "_[_";
 		private const string JSONEndObject = "_]_";
 
@@ -62,16 +64,15 @@ namespace SayHi.API
 
 						using (JsonTextReader jtr = new JsonTextReader(new StringReader(obj.Result)))
 						{
-							JsonIndexer idx = new JsonIndexer (jtr);
-							ret.ID = idx ["id"];
-//							while (jtr.Read())
-//							{
-//								if (jtr.TokenType == JsonToken.PropertyName && CompareStrings (jtr, "id"))
-//								{
-//									ret.ID = jtr.ReadAsString ();
-//									break;
-//								}
-//							}						
+	
+							while (jtr.Read())
+							{
+								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "id"))
+								{
+									ret.ID = jtr.ReadAsString ();
+									break;//only parsing ID
+								}
+							}						
 						}
 						//TODO:parse other fields
 
@@ -116,11 +117,33 @@ namespace SayHi.API
 						
 						using (JsonTextReader jtr = new JsonTextReader(new StringReader(obj.Result)))
 						{
-							JsonIndexer idx = new JsonIndexer (jtr);
-							ret.DOBRaw = idx ["dob"];
-							ret.EmailAddress = idx ["email"];
-							ret.ID = idx ["id"];
-							ret.LastName = idx ["lastName"];
+//							JsonIndexer idx = new JsonIndexer (jtr);
+//							ret.DOBRaw = idx ["dob"];
+//							ret.EmailAddress = idx ["email"];
+//							ret.ID = idx ["id"];
+//							ret.LastName = idx ["lastName"];
+							while (jtr.Read())
+							{
+								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "email"))
+								{
+									ret.EmailAddress = jtr.ReadAsString ();
+								}
+								else
+								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "firstName"))
+								{
+									ret.FirstName = jtr.ReadAsString ();
+								}
+								else
+								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "lastName"))
+								{
+									ret.LastName = jtr.ReadAsString ();
+								}
+								else
+								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "id"))
+								{
+									ret.ID = jtr.ReadAsString ();
+								}
+							}
 						}
 					}
 					catch (Exception e)
@@ -165,7 +188,45 @@ namespace SayHi.API
 
 							while (jtr.Read())
 							{
-
+								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "address"))
+								{
+									ret.Address = jtr.ReadAsString ();
+								}
+								else
+								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "date"))
+								{
+									ret.Date = jtr.ReadAsString ();
+								}
+								else
+								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "end_time"))
+								{
+									ret.EndTime = jtr.ReadAsString ();
+								}
+								else
+								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "event_code"))
+								{
+									ret.EventCode = jtr.ReadAsString ();
+								}
+								else
+								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "name"))
+								{
+									ret.Name = jtr.ReadAsString ();
+								}
+								else
+								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "start_time"))
+								{
+									ret.StartTime = jtr.ReadAsString ();
+								}
+								else
+								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "summary"))
+								{
+									ret.Summary = jtr.ReadAsString ();
+								}
+								else
+								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "venue"))
+								{
+									ret.Venue = jtr.ReadAsString ();
+								}
 							}
 						}
 					}
@@ -180,9 +241,60 @@ namespace SayHi.API
 			};
 			syrc.SendRestRequest ();
 		}
+	
+		public void CheckIntoEvent (string userId, string eventCode)
+		{
+			string json = ParamsToJSON ("userid", userId, "event_code");
+			SayHiRestClient syrc = new SayHiRestClient (SayHiRestClient.HTTPPOSTMETHOD, CreateEndpointURL (CheckInUserPath), json);
+			syrc.OnRestCallCompleted += (RestResult obj) => 
+			{
+				ResponseBase ret = null;
 
-		//public void GetUserInfo(string id)
+				if (!obj.IsSuccess)
+				{
+					ret = new ResponseBase (obj.IsSuccess, obj.Result);
+				}
+				else
+				{
+					try
+					{
+						bool success = false;
+						string msg = "";
+						using (JsonTextReader jtr = new JsonTextReader(new StringReader(obj.Result)))
+						{
 
+							while (jtr.Read())
+							{
+								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "Success"))
+								{
+									success = jtr.ReadAsInt32 () == 0;
+								} 
+							}
+
+							if (!success)
+							{
+								msg = "Unabled to parse JSON";
+							}
+
+							ret = new ResponseBase (success, msg);
+						}
+					}
+					catch (Exception e)
+					{
+						ret = new ResponseBase (false, GenerateParseErrorMessage (e));
+					}
+				}
+
+				SafeRaiseEvent (OnRegisterUserCompleted, ret);
+
+			};
+			syrc.SendRestRequest ();
+		}
+		bool JsonKeyMatches (JsonTextReader jtr, JsonToken token, string key)
+		{
+			bool ret = jtr.TokenType == token && CompareStrings (jtr, key);
+			return ret;
+		}
 		void SafeRaiseEvent (Delegate eventToRaise, params object[] args)
 		{
 			var shadow = eventToRaise;

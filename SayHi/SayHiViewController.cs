@@ -33,6 +33,7 @@ namespace SayHi
 		{
 
 			base.ViewDidLoad ();//"sayhi1m,pp";
+			this.CurrentEvent = null;
 			this.Title = "Welcome!";
 			this.View.AddGestureRecognizer (new UITapGestureRecognizer (OnViewTouchUp));
 			if (SayHiBootStrapper.CurrentUser != null)
@@ -64,6 +65,13 @@ namespace SayHi
 				vc.SourceSegue = segue.Identifier;
 				vc.Mode = RegistrationMode.HomePageDestination;
 			}
+			else
+			if (segue.Identifier == SayHiConstants.SHVCtoESVCSegue)
+			{
+				EventSummaryViewController vc = (EventSummaryViewController)segue.DestinationViewController;
+				vc.Mode = EventSummaryMode.Normal;
+				vc.CurrentEvent = this.CurrentEvent;
+			}
 		}
 
 		partial void onRegisterClicked (MonoTouch.UIKit.UIButton sender)
@@ -76,22 +84,35 @@ namespace SayHi
 
 		}
 
+		bool isWaiting = false;
 		partial void onGoButtonClicked (MonoTouch.UIKit.UIButton sender)
 		{
 			//navigate
+			if (isWaiting)
+			{
+				return;
+			}
+
 			SayHiHelper sh = new SayHiHelper ();
 			sh.OnGetEventInfoCompleted += HandleOnGetEventInfoCompleted;
+			isWaiting = true;
 			sh.GetEventInfo (m_eventCodeBox.Text);
 		}
 
 		void HandleOnGetEventInfoCompleted (SayHi.API.Models.Event obj)
 		{
 			this.CurrentEvent = obj;
-			this.InvokeOnMainThread (
-				delegate
+
+			if (obj.IsSucess)
 			{
-				PerformSegue (SayHiConstants.SHVCtoESVCSegue, this);
-			});
+				this.InvokeOnMainThread (
+				delegate
+				{
+					PerformSegue (SayHiConstants.SHVCtoESVCSegue, this);
+				});
+			}
+
+			isWaiting = false;
 		}
 
 		public override void ViewDidUnload ()

@@ -1,24 +1,19 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SayHi/RegisterUserViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SayHi/API/SayHiHelper.cs">
     <Files>
-      <File FileName="SayHi/SayHiViewController.cs" Line="45" Column="4" />
-      <File FileName="SayHi/EventSummaryViewController.cs" Line="40" Column="38" />
-      <File FileName="SayHi/EventSummaryViewController.designer.cs" Line="43" Column="32" />
-      <File FileName="SayHi/RegisterUserViewController.cs" Line="16" Column="4" />
-      <File FileName="SayHi/SayHiConstants.cs" Line="8" Column="52" />
-      <File FileName="SayHi/API/SayHiRestClient.cs" Line="130" Column="1" />
-      <File FileName="SayHi/API/SayHiHelper.cs" Line="191" Column="1" />
-      <File FileName="SayHi/RegistrationMode.cs" Line="8" Column="23" />
+      <File FileName="SayHi/SayHiViewController.cs" Line="71" Column="1" />
+      <File FileName="SayHi/RegistrationMode.cs" Line="8" Column="10" />
+      <File FileName="SayHi/EventSummaryViewController.cs" Line="82" Column="13" />
+      <File FileName="SayHi/API/SayHiHelper.cs" Line="169" Column="9" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="SayHi" expanded="True">
-            <Node name="API" expanded="True" />
-            <Node name="EventSummaryViewController.cs" expanded="True" />
-            <Node name="MainStoryboard.storyboard" selected="True" />
-            <Node name="RegisterUserViewController.cs" expanded="True" />
+            <Node name="API" expanded="True">
+              <Node name="SayHiHelper.cs" selected="True" />
+            </Node>
             <Node name="SayHiViewController.cs" expanded="True" />
           </Node>
         </State>
@@ -35,14 +30,16 @@
       <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi.API/MyClass.cs" line="44" />
       <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/API/SayHiRestClient.cs" line="129" />
       <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/API/SayHiRestClient.cs" line="114" />
-      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/API/SayHiHelper.cs" line="71" />
-      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/API/SayHiHelper.cs" line="115" />
-      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/API/SayHiHelper.cs" line="107" />
-      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/API/SayHiHelper.cs" line="65" />
+      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/API/SayHiHelper.cs" line="72" />
+      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/API/SayHiHelper.cs" line="116" />
+      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/API/SayHiHelper.cs" line="108" />
+      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/API/SayHiHelper.cs" line="66" />
       <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/API/JsonIndexer.cs" line="50" />
       <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/SayHiViewController.cs" line="55" />
-      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/EventSummaryViewController.cs" line="23" />
+      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/EventSummaryViewController.cs" line="30" />
       <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/RegisterUserViewController.cs" line="38" />
+      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/SayHiViewController.cs" line="71" />
+      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/SayHiViewController.cs" line="46" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>

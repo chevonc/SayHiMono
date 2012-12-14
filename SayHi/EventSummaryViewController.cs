@@ -1,6 +1,8 @@
 
 using System;
 using System.Drawing;
+using SayHi.API;
+using SayHi.API.Models;
 
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
@@ -19,6 +21,11 @@ namespace SayHi
 		}
 
 		public EventSummaryMode Mode {
+			get;
+			set;
+		}
+
+		public Event CurrentEvent {
 			get;
 			set;
 		}
@@ -62,6 +69,7 @@ namespace SayHi
 		{
 			base.ViewDidLoad ();
 			this.Title = "Event Summary";
+			//TODO: load all data from CurrentEvent property
 			if (Mode == EventSummaryMode.CheckIn)
 			{
 				noButton.Hidden = yesButton.Hidden = true;
@@ -77,6 +85,18 @@ namespace SayHi
 
 		partial void eventCheckInClicked (MonoTouch.UIKit.UIButton sender)
 		{
+			if (SayHiBootStrapper.CurrentUser == null)
+			{
+				return;
+			}
+			SayHiHelper sh = new SayHiHelper ();
+			sh.OnCheckIntoEventCompleted += HandleOnCheckIntoEventCompleted;
+			sh.CheckIntoEvent (SayHiBootStrapper.CurrentUser.ID, CurrentEvent.EventCode);
+		}
+
+		void HandleOnCheckIntoEventCompleted (ResponseBase obj)
+		{
+			//take to sayhi screen
 
 		}
 		

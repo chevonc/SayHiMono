@@ -50,7 +50,7 @@ namespace SayHi
 			if (!isObjectReadStart)
 			{
 				//ignore first start object
-				while (reader.TokenType == JsonToken.StartObject || reader.TokenType == JsonToken.None)
+				while (reader.TokenType == JsonToken.PropertyName)
 				{
 					reader.Read ();
 				}
@@ -79,11 +79,7 @@ namespace SayHi
 						if (key != null)
 						{
 							reader.Read ();//reads values
-//					if (reader.TokenType == JsonToken.EndObject)
-//					{
-//						continue;
-//					}
-//					
+					
 							if (reader.TokenType == JsonToken.StartObject)
 							{
 								JsonIndexer indexer = new JsonIndexer (reader);

@@ -20,22 +20,46 @@ namespace SayHi.API.Models
 
 		}
 
-		public string EventId {
+		public string Id {
 			get;
 			set;
 		}
 
-		public string EventName {
+		public string Name {
 			get;
 			set;
 		}
 
-		public string EventOrganizer {
+		public string Organizer {
 			get;
 			set;
 		}
 
-		public string EventSummary {
+		public string Summary {
+			get;
+			set;
+		}
+
+		public string StartTime {
+			get;
+			set;
+		}
+
+		public string Date {
+			get;
+			set;
+		}
+		public string Venue {
+			get;
+			set;
+		}
+
+		public string EndTime {
+			get;
+			set;
+		}
+
+		public string Address {
 			get;
 			set;
 		}
