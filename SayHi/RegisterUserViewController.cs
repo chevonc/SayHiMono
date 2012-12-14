@@ -25,6 +25,11 @@ namespace SayHi
 			set;
 		}
 
+		public EventSummaryViewController CallingEventVC {
+			get;
+			set;
+		}
+
 
 		public RegisterUserViewController (IntPtr handle) : base(handle)
 		{
@@ -47,6 +52,10 @@ namespace SayHi
 		{
 			if (Mode == RegistrationMode.EventDetailDestination)
 			{
+				if (CallingEventVC != null)
+				{
+					CallingEventVC.Mode = EventSummaryMode.CheckIn;
+				}
 				//take back to detail screen of event
 				//override prepare for segue so that i can show checkin button
 				//PerformSegue(SayHiConstants.)

@@ -39,9 +39,14 @@ namespace SayHi
 		{
 			//go register if notr logged in
 			//else go to event details
-			if (!false)//not logged in
+
+			if (SayHiBootStrapper.CurrentUser == null)//not logged in
 			{
 				PerformSegue (SayHiConstants.ESVCtoRUVCSegue, this);
+			}
+			else
+			{
+				PerformSegue (SayHiConstants.ESVCtoUMVC, this);
 			}
 		}
 
@@ -78,6 +83,13 @@ namespace SayHi
 			//TODO: load all data from CurrentEvent property
 
 
+			//Setup ();
+
+			// Perform any additional setup after loading the view, typically from a nib.
+		}
+
+		void Setup ()
+		{
 			if (Mode == EventSummaryMode.Normal)
 			{
 				noButton.Hidden = yesButton.Hidden = false;
@@ -88,7 +100,6 @@ namespace SayHi
 				noButton.Hidden = yesButton.Hidden = true;
 				checkInButton.Hidden = false;
 			}
-
 			if (Mode == EventSummaryMode.CheckIn)
 			{
 				checkInButton.TitleLabel.Text = "Check In";
@@ -98,7 +109,6 @@ namespace SayHi
 			{
 				checkInButton.TitleLabel.Text = "Say Hi!";
 			}
-			// Perform any additional setup after loading the view, typically from a nib.
 		}
 
 		partial void eventCheckInClicked (MonoTouch.UIKit.UIButton sender)
@@ -138,6 +148,12 @@ namespace SayHi
 					SayHiBootStrapper.ShowAlertMessage (title, msg);
 				});
 			}
+		}
+
+		public override void ViewDidAppear (bool animated)
+		{
+			base.ViewDidAppear (animated);
+			Setup ();
 		}
 		
 		public override void ViewDidUnload ()

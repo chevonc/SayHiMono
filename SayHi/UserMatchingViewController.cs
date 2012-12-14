@@ -33,8 +33,16 @@ namespace SayHi
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-			busyIndicator.StartAnimating ();
-			StartGettingMatch ();
+			if (SayHiBootStrapper.CurrentUser != null)
+			{
+				busyIndicator.StartAnimating ();
+				StartGettingMatch ();
+			}
+			else
+			{
+				SayHiBootStrapper.ShowAlertMessage ("Unable to Match", "There was an error finding a match");
+				NavigationController.PopViewControllerAnimated (true);
+			}
 			// Perform any additional setup after loading the view, typically from a nib.
 		}
 
