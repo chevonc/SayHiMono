@@ -368,7 +368,6 @@ namespace SayHi.API
 									success = CompareStrings (jtr, "good");
 								}
 							}
-
 							ret = new ResponseBase (success, msg);
 						}
 					}
@@ -376,10 +375,8 @@ namespace SayHi.API
 					{
 						ret = new ResponseBase (false, GenerateParseErrorMessage (e));
 					}
-				}
-				
+				}	
 				SafeRaiseEvent (OnCreateEventCompleted, ret);
-				
 			};
 			syrc.SendRestRequest ();
 		}
