@@ -132,7 +132,11 @@ namespace SayHi
 			{
 				string title = "Error";
 				string msg = string.Format ("Can't Check-in with event code: {0}", CurrentEvent.Code);
-				SayHiBootStrapper.ShowAlertMessage (title, msg);
+				this.InvokeOnMainThread (
+					delegate
+				{
+					SayHiBootStrapper.ShowAlertMessage (title, msg);
+				});
 			}
 		}
 		

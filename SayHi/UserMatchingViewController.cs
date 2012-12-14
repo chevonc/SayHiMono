@@ -88,8 +88,12 @@ namespace SayHi
 			}
 			else
 			{
-				SayHiBootStrapper.ShowAlertMessage ("Error", "Could not find match. :(. Go Back and try again?");
-				NavigationController.PopViewControllerAnimated (true);
+				this.InvokeOnMainThread (
+					delegate
+				{
+					SayHiBootStrapper.ShowAlertMessage ("Error", "Could not find match. :(. Go Back and try again?");
+					NavigationController.PopViewControllerAnimated (true);
+				});
 			}
 		}
 		

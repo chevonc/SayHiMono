@@ -135,7 +135,11 @@ namespace SayHi
 			}
 			else
 			{
-				SayHiBootStrapper.ShowAlertMessage ("Error", "Could not retrieve event. Be sure that the code is correct and you are connected to a network");
+				this.InvokeOnMainThread (
+					delegate
+				{
+					SayHiBootStrapper.ShowAlertMessage ("Error", "Could not retrieve event. Be sure that the code is correct and you are connected to a network");
+				});
 			}
 
 			isWaiting = false;
