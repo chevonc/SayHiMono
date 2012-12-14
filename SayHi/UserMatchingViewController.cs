@@ -47,9 +47,28 @@ namespace SayHi
 		{
 			busyIndicator.StopAnimating ();
 			busyIndicator.Hidden = true;
-			m_bottomCaption.Hidden = m_topCaption.Hidden = true;
-			m_placeHolderImage.Hidden = true;
 
+			if (obj.IsSucess)
+			{
+				m_bottomCaption.Hidden = m_topCaption.Hidden = true;
+				m_placeHolderImage.Hidden = true;
+
+				//load ui elements with data;
+				m_matchedUsersName.Text = string.Format ("{0} {1}", obj.FirstName, obj.LastName);
+				m_matchedUsersInterest1.Text = obj.InterestOne;
+				m_matchedUsersInterest2.Text = obj.InterestTwo;
+				m_matchedUsersSummary.Text = obj.Summary;
+
+				m_matchedUsersImage.Hidden = false;
+				m_matchedUsersName.Hidden = false;
+				m_matchedUsersInterest1.Hidden = false;
+				m_matchedUsersInterest2.Hidden = false;
+				m_matchedUsersSummary.Hidden = false;
+			}
+			else
+			{
+				SayHiBootStrapper.ShowAlertMessage ("Error", "Could not find match. :(. Go Back and try again?");
+			}
 		}
 		
 		public override void ViewDidUnload ()

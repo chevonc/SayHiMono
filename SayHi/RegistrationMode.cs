@@ -5,7 +5,8 @@ namespace SayHi
 	public enum EventSummaryMode
 	{
 		Normal,
-		CheckIn
+		CheckIn,
+		MatchUser
 	}
 	public enum RegistrationMode
 	{

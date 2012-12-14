@@ -76,28 +76,49 @@ namespace SayHi
 			base.ViewDidLoad ();
 			this.Title = "Event Summary";
 			//TODO: load all data from CurrentEvent property
-			if (Mode == EventSummaryMode.CheckIn)
+
+
+			if (Mode == EventSummaryMode.Normal)
+			{
+				noButton.Hidden = yesButton.Hidden = false;
+				checkInButton.Hidden = true;
+			}
+			else
 			{
 				noButton.Hidden = yesButton.Hidden = true;
 				checkInButton.Hidden = false;
 			}
-			else
+
+			if (Mode == EventSummaryMode.CheckIn)
 			{
-				noButton.Hidden = yesButton.Hidden = false;
-				checkInButton.Hidden = true;
+				checkInButton.TitleLabel.Text = "Check In";
+			}
+			else
+			if (Mode == EventSummaryMode.MatchUser)
+			{
+				checkInButton.TitleLabel.Text = "Say Hi!";
 			}
 			// Perform any additional setup after loading the view, typically from a nib.
 		}
 
 		partial void eventCheckInClicked (MonoTouch.UIKit.UIButton sender)
 		{
-			if (SayHiBootStrapper.CurrentUser == null)
+			if (SayHiBootStrapper.CurrentUser == null || SayHiBootStrapper.CurrentEvent == null)
 			{
 				return;
 			}
 			SayHiHelper sh = new SayHiHelper ();
-			sh.OnCheckIntoEventCompleted += HandleOnCheckIntoEventCompleted;
-			sh.CheckIntoEvent (SayHiBootStrapper.CurrentUser.ID, CurrentEvent.Code);
+
+			if (Mode == EventSummaryMode.CheckIn)
+			{
+				sh.OnCheckIntoEventCompleted += HandleOnCheckIntoEventCompleted;
+				sh.CheckIntoEvent (SayHiBootStrapper.CurrentUser.ID, CurrentEvent.Code);
+			}
+			else
+			if (Mode == EventSummaryMode.MatchUser)
+			{
+				PerformSegue (SayHiConstants.ESVCtoUMVC, this);
+			}
 		}
 
 		void HandleOnCheckIntoEventCompleted (ResponseBase obj)
@@ -109,12 +130,11 @@ namespace SayHi
 			}
 			else
 			{
-				UIAlertView error = new UIAlertView ("Error", string.Format ("Can't Check-in with event code: {0}", CurrentEvent.Code), null, "OK", null);
-				error.Show ();
+				string title = "Error";
+				string msg = string.Format ("Can't Check-in with event code: {0}", CurrentEvent.Code);
+				SayHiBootStrapper.ShowAlertMessage (title, msg);
 			}
 		}
-
-
 		
 		public override void ViewDidUnload ()
 		{

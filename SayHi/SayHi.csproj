@@ -130,6 +130,7 @@
     <Content Include="Assets\basic_splash.png" />
     <Content Include="Assets\icon.png" />
     <Content Include="Assets\sayHiMatch.png" />
+    <Content Include="Assets\placeholder_125_125.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\basic_splash.png" />
@@ -140,5 +141,6 @@
     <BundleResource Include="Resources\sayhi-logo_red_347_100.png" />
     <BundleResource Include="Resources\sayhi-logo_white_347_100.png" />
     <BundleResource Include="Resources\sayHiMatch.png" />
+    <BundleResource Include="Resources\placeholder_125_125.png" />
   </ItemGroup>
 </Project>
