@@ -14,9 +14,19 @@ namespace SayHi
 			private set;
 		}
 
+		public static Event CurrentEvent {
+			get;
+			private set;
+		}
+
 		public static void SetCurrentUser (UserModel user)
 		{
+			CurrentUser = user;
+		}
 
+		public static void SetCurrentEvent (Event evnt)
+		{
+			CurrentEvent = evnt;
 		}
 	}
 }

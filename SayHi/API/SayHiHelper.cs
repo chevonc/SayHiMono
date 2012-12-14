@@ -8,6 +8,7 @@ using System.Text;
 using SayHi.API.Models;
 using System.Net;
 using GeneralClasses;
+using System.Collections.Generic;
 
 namespace SayHi.API
 {
@@ -18,13 +19,16 @@ namespace SayHi.API
 		public event Action<UserModel> OnRegisterUserCompleted;
 		public event Action<Event> OnGetEventInfoCompleted;
 		public event Action<ResponseBase> OnCheckIntoEventCompleted;
-
+		public event Action<List<Event>> OnGetEventsCompleted;
+		public event Action<ResponseBase> OnCreateEventCompleted;
 		public const string APIBaseURL = "http://say-hi.herokuapp.com/api/";
 		public const string APIVersionPath = "v1/";
 		public const string RegisterUserPath = "registerUser/";
 		public const string GetEventInfoPath = "event/getEvent/";
 		public const string LoginUserPath = "getUserInfo/login/";
 		public const string CheckInUserPath = "event/addUser/";
+		public const string GetEventsPath = "event/?format=json";
+		public const string CreateEventPath = "event/setEvent/";
 		private const string JSONBeginObject = "_[_";
 		private const string JSONEndObject = "_]_";
 
@@ -290,11 +294,102 @@ namespace SayHi.API
 			};
 			syrc.SendRestRequest ();
 		}
+
+		public void GetEvents (string userId, string eventCode)
+		{
+			string json = string.Empty;
+			SayHiRestClient syrc = new SayHiRestClient (SayHiRestClient.HTTPPOSTMETHOD, 
+			                                            CreateEndpointURL (GetEventsPath + "&attendees="), json);
+			syrc.OnRestCallCompleted += (RestResult obj) => 
+			{
+				List<Event> ret = new List<Event> ();
+
+				if (obj.IsSuccess)
+				{
+					try
+					{
+						using (JsonTextReader jtr = new JsonTextReader(new StringReader(obj.Result)))
+						{
+							while (jtr.Read())
+							{
+								//read start objs
+								ret.Add (ParseEventJson (jtr));
+								//read off end objs
+							}
+						}
+					}
+					catch (Exception e)
+					{
+					}
+				}
+				
+				SafeRaiseEvent (OnRegisterUserCompleted, ret);
+				
+			};
+			syrc.SendRestRequest ();
+		}
+
+		public Event ParseEventJson (JsonTextReader jtr)
+		{
+			return new Event (true, "");
+		}
+
+		public void CreateEvent (string userId, string eventName, string address, string city, 
+		                        string venue, string date, string startTime, string endTime, string summary, 
+		                        int maxAttendants, bool recurring)
+		{
+			string json = ParamsToJSON ("user_id", userId, "name", eventName, "address", address, "city", 
+			                            city, "venue", venue, "date", date, "start_time", startTime, "end_time",
+			                            endTime, "summary", summary, "max_attendants", maxAttendants, "recurring", 
+			                            recurring);
+			SayHiRestClient syrc = new SayHiRestClient (SayHiRestClient.HTTPPOSTMETHOD, CreateEndpointURL (CreateEventPath), json);
+			syrc.OnRestCallCompleted += (RestResult obj) => 
+			{
+				ResponseBase ret = null;
+				
+				if (!obj.IsSuccess)
+				{
+					ret = new ResponseBase (obj.IsSuccess, obj.Result);
+				}
+				else
+				{
+					try
+					{
+						bool success = false;
+						string msg = string.Empty;
+						
+						using (JsonTextReader jtr = new JsonTextReader(new StringReader(obj.Result)))
+						{
+							
+							while (jtr.Read())
+							{
+								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "good"))
+								{
+									success = CompareStrings (jtr, "good");
+								}
+							}
+
+							ret = new ResponseBase (success, msg);
+						}
+					}
+					catch (Exception e)
+					{
+						ret = new ResponseBase (false, GenerateParseErrorMessage (e));
+					}
+				}
+				
+				SafeRaiseEvent (OnCreateEventCompleted, ret);
+				
+			};
+			syrc.SendRestRequest ();
+		}
+
 		bool JsonKeyMatches (JsonTextReader jtr, JsonToken token, string key)
 		{
 			bool ret = jtr.TokenType == token && CompareStrings (jtr, key);
 			return ret;
 		}
+
 		void SafeRaiseEvent (Delegate eventToRaise, params object[] args)
 		{
 			var shadow = eventToRaise;
@@ -304,7 +399,7 @@ namespace SayHi.API
 			}
 		}
 
-		string ParamsToJSON (params string[] keysAndValues)
+		string ParamsToJSON (params object[] keysAndValues)
 		{
 			if (keysAndValues == null || keysAndValues.Length == 0)
 			{
@@ -318,12 +413,12 @@ namespace SayHi.API
 					wr.WriteStartObject ();
 					for (int i = 0; i < keysAndValues.Length; i+=2)
 					{
-						string key = keysAndValues [i];
+						string key = keysAndValues [i].ToString ();
 						string prop = null;
 
 						if (i < keysAndValues.Length - 1)
 						{
-							prop = keysAndValues [i + 1];
+							prop = keysAndValues [i + 1].ToString ();
 						}
 
 						if (!WriteStartOrEndObject (key, wr))
@@ -378,17 +473,17 @@ namespace SayHi.API
 			SayHiRestClient syrc = new SayHiRestClient (SayHiRestClient, CreateEndpointURL(), json);
 			syrc.OnRestCallCompleted += (RestResult obj) => 
 			{
-				ResponseType ret = null;
+				ResponseBase ret = null;
 
 				if (!obj.IsSuccess)
 				{
-					ret = new ResponseType (obj.IsSuccess, obj.Result);
+					ret = new ResponseBase (obj.IsSuccess, obj.Result);
 				}
 				else
 				{
 					try
 					{
-						ret = new ResponseType (true);
+						ret = new ResponseBase (true);
 
 						using (JsonTextReader jtr = new JsonTextReader(new StringReader(obj.Result)))
 						{
@@ -401,11 +496,11 @@ namespace SayHi.API
 					}
 					catch (Exception e)
 					{
-						ret = new ResponseType (false, GenerateParseErrorMessage (e));
+						ret = new ResponseBase (false, GenerateParseErrorMessage (e));
 					}
 				}
 
-				SafeRaiseEvent (OnRegisterUserCompleted, ret);
+				SafeRaiseEvent (EventToRaise, ret);
 
 			};
 			syrc.SendRestRequest ();
