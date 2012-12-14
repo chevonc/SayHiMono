@@ -55,6 +55,11 @@ namespace SayHi
 				vc.SourceSegue = segue.Identifier;
 				vc.Mode = RegistrationMode.EventDetailDestination;
 			}
+			else
+			if (segue.Identifier == SayHiConstants.ESVCtoUMVC)
+			{
+				UserMatchingViewController vc = (UserMatchingViewController)segue.DestinationViewController;
+			}
 		}
 		
 		public override void DidReceiveMemoryWarning ()
@@ -97,8 +102,18 @@ namespace SayHi
 		void HandleOnCheckIntoEventCompleted (ResponseBase obj)
 		{
 			//take to sayhi screen
-
+			if (obj.IsSucess)
+			{
+				PerformSegue (SayHiConstants.ESVCtoUMVC, this);
+			}
+			else
+			{
+				UIAlertView error = new UIAlertView ("Error", string.Format ("Can't Check-in with event code: {0}", CurrentEvent.EventCode), null, "OK", null);
+				error.Show ();
+			}
 		}
+
+
 		
 		public override void ViewDidUnload ()
 		{

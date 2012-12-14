@@ -112,10 +112,15 @@
     <Compile Include="SayHiConstants.cs" />
     <Compile Include="SayHiBootStrapper.cs" />
     <Compile Include="RegistrationMode.cs" />
+    <Compile Include="UserMatchingViewController.cs" />
+    <Compile Include="UserMatchingViewController.designer.cs">
+      <DependentUpon>UserMatchingViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
     <InterfaceDefinition Include="Resources\RegisterUserViewController.xib" />
+    <InterfaceDefinition Include="UserMatchingViewController.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
