@@ -39,12 +39,13 @@ namespace SayHi
 			if (SayHiBootStrapper.CurrentUser != null)
 			{
 				signedInHeaderLabel.Hidden = false;
-				signedInUserNameLabel.Text = SayHiBootStrapper.CurrentUser.FirstName + " " + 
+				m_signedInUserButton.TitleLabel.Text = SayHiBootStrapper.CurrentUser.FirstName + " " + 
 					SayHiBootStrapper.CurrentUser.LastName;
 			}
 			else
 			{
-				signedInHeaderLabel.Hidden = signedInUserNameLabel.Hidden = true;
+				signedInHeaderLabel.Hidden = m_signedInUserButton.Hidden = true;
+				SayHiBootStrapper.ShowAlertMessage ("Info", "Enter an Event Code to get started");
 			}
 			//new SayHi.API.SayHiHelper ().LoginUser ("sayhi", "pp");
 			//new SayHi.API.SayHiHelper ().RegisterUser ("sayhiuser00011", "password1", "fb", "ln", "sayhi1@sayhi.com", "1/1/1/", "asdasd");
@@ -55,6 +56,7 @@ namespace SayHi
 		{
 			m_eventCodeBox.EndEditing (true);
 		}
+
 
 		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
 		{
@@ -73,6 +75,8 @@ namespace SayHi
 				vc.CurrentEvent = this.CurrentEvent;
 			}
 		}
+
+		
 
 		partial void onRegisterClicked (MonoTouch.UIKit.UIButton sender)
 		{
@@ -110,6 +114,10 @@ namespace SayHi
 				{
 					PerformSegue (SayHiConstants.SHVCtoESVCSegue, this);
 				});
+			}
+			else
+			{
+				SayHiBootStrapper.ShowAlertMessage ("Error", "Could not retrieve event. Be sure that the code is correct and you are connected to a network");
 			}
 
 			isWaiting = false;

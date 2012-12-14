@@ -30,7 +30,7 @@ namespace SayHi.API
 		public const string CheckInUserPath = "event/addUser/";
 		public const string GetEventsPath = "event/?format=json";
 		public const string CreateEventPath = "event/setEvent/";
-		public const string MatchUserPath = ""; //TODO: fill in match user path
+		public const string MatchUserPath = "getUserInfo/getNextMatch/"; //TODO: fill in match user path
 		private const string JSONBeginObject = "_[_";
 		private const string JSONEndObject = "_]_";
 

@@ -116,6 +116,10 @@
     <Compile Include="UserMatchingViewController.designer.cs">
       <DependentUpon>UserMatchingViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserSummaryViewController.cs" />
+    <Compile Include="UserSummaryViewController.designer.cs">
+      <DependentUpon>UserSummaryViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />

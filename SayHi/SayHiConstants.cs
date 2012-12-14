@@ -8,6 +8,7 @@ namespace SayHi
 		public const string ESVCtoRUVCSegue = "esvcTOruvc";
 		public const string SHVCtoRUVC = "shvcTOruvc";
 		public const string ESVCtoUMVC = "esvcTOumvc";
+		public const string UMVCtoUSVC = "umvcTOusvc";
 	}
 }
 

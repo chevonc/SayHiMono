@@ -21,9 +21,6 @@ namespace SayHi
 		MonoTouch.UIKit.UILabel m_bottomCaption { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIImageView m_placeHolderImage { get; set; }
-
-		[Outlet]
 		MonoTouch.UIKit.UILabel m_toLabel { get; set; }
 
 		[Outlet]
@@ -40,6 +37,12 @@ namespace SayHi
 
 		[Outlet]
 		MonoTouch.UIKit.UILabel m_matchedUsersInterest2 { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIButton m_placeHolderImageButton { get; set; }
+
+		[Action ("m_onMatchedUserButtonClicked:")]
+		partial void m_onMatchedUserButtonClicked (MonoTouch.UIKit.UIButton sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -56,11 +59,6 @@ namespace SayHi
 			if (m_bottomCaption != null) {
 				m_bottomCaption.Dispose ();
 				m_bottomCaption = null;
-			}
-
-			if (m_placeHolderImage != null) {
-				m_placeHolderImage.Dispose ();
-				m_placeHolderImage = null;
 			}
 
 			if (m_toLabel != null) {
@@ -91,6 +89,11 @@ namespace SayHi
 			if (m_matchedUsersInterest2 != null) {
 				m_matchedUsersInterest2.Dispose ();
 				m_matchedUsersInterest2 = null;
+			}
+
+			if (m_placeHolderImageButton != null) {
+				m_placeHolderImageButton.Dispose ();
+				m_placeHolderImageButton = null;
 			}
 		}
 	}

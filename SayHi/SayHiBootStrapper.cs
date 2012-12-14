@@ -45,6 +45,26 @@ namespace SayHi
 			UIAlertView error = new UIAlertView (title, msg, null, firstButtonText, otherButtonsTexts);
 			error.Show ();
 		}
+
+		private static readonly Random sr_rand = new Random ();
+
+		public static string GenerateMockInterest (string skip = "")
+		{
+			string ret = "";
+			do
+			{
+				ret = MockInterests [sr_rand.Next (MockInterests.Length)];
+			}
+			while(ret == skip);
+
+			return ret;
+		}
+
+		public static string[] MockInterests = new string[]{
+			"Computer Science", ".NET", "Diving", "Mac OSX", "JAVA", "C#", "Windows Phone", "Objective-c",
+			"Computers", "WP8", "Hardware", "Big Data", "Android", "APIs", "JavaScript", "Rails", "iOS", "Django",
+			"Ruby", "Mobile", "C++", "PHP", "C", "Everything"
+		};
 	}
 }
 

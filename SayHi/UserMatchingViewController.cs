@@ -11,6 +11,8 @@ namespace SayHi
 {
 	public partial class UserMatchingViewController : UIViewController
 	{
+		private UserModel m_lastMatchedUser = null;
+
 		public UserMatchingViewController (IntPtr handle)  : base (handle)
 		{
 
@@ -27,7 +29,7 @@ namespace SayHi
 			
 			// Release any cached data, images, etc that aren't in use.
 		}
-		
+
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
@@ -43,6 +45,24 @@ namespace SayHi
 			sh.MatchUser (SayHiBootStrapper.CurrentUser.ID, SayHiBootStrapper.CurrentEvent.Code);
 		}
 
+		partial void m_onMatchedUserButtonClicked (MonoTouch.UIKit.UIButton sender)
+		{
+			if (m_lastMatchedUser != null)
+			{
+				PerformSegue (SayHiConstants.UMVCtoUSVC, this);
+			}
+		}
+
+		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
+		{
+			base.PrepareForSegue (segue, sender);
+			if (segue.Identifier == SayHiConstants.UMVCtoUSVC)
+			{
+				UserSummaryViewController vc = (UserSummaryViewController)segue.DestinationViewController;
+				vc.TargetUser = m_lastMatchedUser;
+			}
+		}
+
 		void HandleOnMatchUserCompleted (UserModel obj)
 		{
 			busyIndicator.StopAnimating ();
@@ -50,14 +70,15 @@ namespace SayHi
 
 			if (obj.IsSucess)
 			{
+				m_lastMatchedUser = obj;
 				m_bottomCaption.Hidden = m_topCaption.Hidden = true;
-				m_placeHolderImage.Hidden = true;
+				m_placeHolderImageButton.Hidden = true;
 
 				//load ui elements with data;
-				m_matchedUsersName.Text = string.Format ("{0} {1}", obj.FirstName, obj.LastName);
-				m_matchedUsersInterest1.Text = obj.InterestOne;
-				m_matchedUsersInterest2.Text = obj.InterestTwo;
-				m_matchedUsersSummary.Text = obj.Summary;
+				m_matchedUsersName.Text = string.Format ("{0} {1}", m_lastMatchedUser.FirstName, m_lastMatchedUser.LastName);
+				m_matchedUsersInterest1.Text = m_lastMatchedUser.InterestOne;
+				m_matchedUsersInterest2.Text = m_lastMatchedUser.InterestTwo;
+				m_matchedUsersSummary.Text = m_lastMatchedUser.Summary;
 
 				m_matchedUsersImage.Hidden = false;
 				m_matchedUsersName.Hidden = false;
@@ -68,6 +89,7 @@ namespace SayHi
 			else
 			{
 				SayHiBootStrapper.ShowAlertMessage ("Error", "Could not find match. :(. Go Back and try again?");
+				NavigationController.PopViewControllerAnimated (true);
 			}
 		}
 		

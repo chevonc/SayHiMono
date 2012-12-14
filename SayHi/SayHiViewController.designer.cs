@@ -12,13 +12,16 @@ namespace SayHi
 	partial class SayHiViewController
 	{
 		[Outlet]
-		MonoTouch.UIKit.UILabel signedInUserNameLabel { get; set; }
-
-		[Outlet]
 		MonoTouch.UIKit.UILabel signedInHeaderLabel { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UITextField m_eventCodeBox { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIButton m_signedInUserButton { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIButton onsignedInUserClicked { get; set; }
 
 		[Action ("onRegisterClicked:")]
 		partial void onRegisterClicked (MonoTouch.UIKit.UIButton sender);
@@ -31,11 +34,6 @@ namespace SayHi
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (signedInUserNameLabel != null) {
-				signedInUserNameLabel.Dispose ();
-				signedInUserNameLabel = null;
-			}
-
 			if (signedInHeaderLabel != null) {
 				signedInHeaderLabel.Dispose ();
 				signedInHeaderLabel = null;
@@ -44,6 +42,16 @@ namespace SayHi
 			if (m_eventCodeBox != null) {
 				m_eventCodeBox.Dispose ();
 				m_eventCodeBox = null;
+			}
+
+			if (m_signedInUserButton != null) {
+				m_signedInUserButton.Dispose ();
+				m_signedInUserButton = null;
+			}
+
+			if (onsignedInUserClicked != null) {
+				onsignedInUserClicked.Dispose ();
+				onsignedInUserClicked = null;
 			}
 		}
 	}
