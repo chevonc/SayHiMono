@@ -1,20 +1,30 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SayHi/API/SayHiHelper.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SayHi/SayHiViewController.designer.cs">
     <Files>
-      <File FileName="SayHi/SayHiViewController.cs" Line="71" Column="1" />
+      <File FileName="SayHi/SayHiViewController.cs" Line="1" Column="1" />
       <File FileName="SayHi/RegistrationMode.cs" Line="8" Column="10" />
-      <File FileName="SayHi/EventSummaryViewController.cs" Line="82" Column="13" />
-      <File FileName="SayHi/API/SayHiHelper.cs" Line="169" Column="9" />
+      <File FileName="SayHi/API/SayHiHelper.cs" Line="72" Column="1" />
+      <File FileName="SayHi/UserSummaryViewController.cs" Line="47" Column="46" />
+      <File FileName="SayHi/API/Models/UserModel.cs" Line="13" Column="6" />
+      <File FileName="SayHi/API/Models/ResponseBase.cs" Line="15" Column="22" />
+      <File FileName="SayHi/RegisterUserViewController.cs" Line="57" Column="23" />
+      <File FileName="SayHi/API/SayHiRestClient.cs" Line="50" Column="49" />
+      <File FileName="SayHi/EventSummaryViewController.cs" Line="93" Column="5" />
+      <File FileName="SayHi/Main.cs" Line="17" Column="1" />
+      <File FileName="SayHi/SayHiViewController.designer.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="SayHi" expanded="True">
             <Node name="API" expanded="True">
-              <Node name="SayHiHelper.cs" selected="True" />
+              <Node name="Models" expanded="True" />
             </Node>
-            <Node name="SayHiViewController.cs" expanded="True" />
+            <Node name="EventSummaryViewController.cs" expanded="True" />
+            <Node name="SayHiViewController.cs" expanded="True">
+              <Node name="SayHiViewController.designer.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
@@ -35,11 +45,18 @@
       <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/API/SayHiHelper.cs" line="108" />
       <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/API/SayHiHelper.cs" line="66" />
       <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/API/JsonIndexer.cs" line="50" />
-      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/SayHiViewController.cs" line="55" />
+      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/SayHiViewController.cs" line="64" />
       <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/EventSummaryViewController.cs" line="30" />
-      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/RegisterUserViewController.cs" line="38" />
-      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/SayHiViewController.cs" line="71" />
-      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/SayHiViewController.cs" line="46" />
+      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/RegisterUserViewController.cs" line="43" />
+      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/SayHiViewController.cs" line="80" />
+      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/SayHiViewController.cs" line="128" />
+      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/API/SayHiHelper.cs" line="175" />
+      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/API/SayHiHelper.cs" line="183" />
+      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/API/SayHiHelper.cs" line="246" />
+      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/RegisterUserViewController.cs" line="53" />
+      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/API/SayHiHelper.cs" line="61" />
+      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/API/SayHiHelper.cs" line="57" />
+      <Breakpoint file="/Users/chevonchristie/Projects/SayHi/SayHi/EventSummaryViewController.cs" line="93" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
