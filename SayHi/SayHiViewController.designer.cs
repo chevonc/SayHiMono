@@ -20,8 +20,8 @@ namespace SayHi
 		[Outlet]
 		MonoTouch.UIKit.UIButton m_signedInUserButton { get; set; }
 
-		[Outlet]
-		MonoTouch.UIKit.UIButton onsignedInUserClicked { get; set; }
+		[Action ("onViewSignedInUser:")]
+		partial void onViewSignedInUser (MonoTouch.UIKit.UIButton sender);
 
 		[Action ("onRegisterClicked:")]
 		partial void onRegisterClicked (MonoTouch.UIKit.UIButton sender);
@@ -47,11 +47,6 @@ namespace SayHi
 			if (m_signedInUserButton != null) {
 				m_signedInUserButton.Dispose ();
 				m_signedInUserButton = null;
-			}
-
-			if (onsignedInUserClicked != null) {
-				onsignedInUserClicked.Dispose ();
-				onsignedInUserClicked = null;
 			}
 		}
 	}
