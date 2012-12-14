@@ -15,7 +15,6 @@
 	UILabel *_signedInHeaderLabel;
 	UITextField *_m_eventCodeBox;
 	UIButton *_m_signedInUserButton;
-	UIButton *_onsignedInUserClicked;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *signedInHeaderLabel;
@@ -23,6 +22,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *m_eventCodeBox;
 
 @property (nonatomic, retain) IBOutlet UIButton *m_signedInUserButton;
+
 - (IBAction)onViewSignedInUser:(UIButton *)sender;
 
 - (IBAction)onRegisterClicked:(UIButton *)sender;

@@ -28,6 +28,25 @@ namespace SayHi
 		}
 		
 		#region View lifecycle
+
+		bool initialSetup = false;
+		void Setup ()
+		{
+			if (SayHiBootStrapper.CurrentUser != null)
+			{
+				signedInHeaderLabel.Hidden = false;
+				m_signedInUserButton.TitleLabel.Text = SayHiBootStrapper.CurrentUser.FirstName + " " + SayHiBootStrapper.CurrentUser.LastName;
+			}
+			else
+			{
+				signedInHeaderLabel.Hidden = m_signedInUserButton.Hidden = true;
+				if (!initialSetup)
+				{
+					initialSetup = true;
+					SayHiBootStrapper.ShowAlertMessage ("Info", "Enter an Event Code to get started");
+				}
+			}
+		}
 		
 		public override void ViewDidLoad ()
 		{
@@ -36,17 +55,7 @@ namespace SayHi
 			this.CurrentEvent = null;
 			this.Title = "Welcome!";
 			this.View.AddGestureRecognizer (new UITapGestureRecognizer (OnViewTouchUp));
-			if (SayHiBootStrapper.CurrentUser != null)
-			{
-				signedInHeaderLabel.Hidden = false;
-				m_signedInUserButton.TitleLabel.Text = SayHiBootStrapper.CurrentUser.FirstName + " " + 
-					SayHiBootStrapper.CurrentUser.LastName;
-			}
-			else
-			{
-				signedInHeaderLabel.Hidden = m_signedInUserButton.Hidden = true;
-				SayHiBootStrapper.ShowAlertMessage ("Info", "Enter an Event Code to get started");
-			}
+			//Setup ();
 			//new SayHi.API.SayHiHelper ().LoginUser ("sayhi", "pp");
 			//new SayHi.API.SayHiHelper ().RegisterUser ("sayhiuser00011", "password1", "fb", "ln", "sayhi1@sayhi.com", "1/1/1/", "asdasd");
 			// Perform any additional setup after loading the view, typically from a nib.
@@ -74,9 +83,18 @@ namespace SayHi
 				vc.Mode = EventSummaryMode.Normal;
 				vc.CurrentEvent = this.CurrentEvent;
 			}
+			else
+			if (segue.Identifier == SayHiConstants.SHVCtoUSVC)
+			{
+				UserSummaryViewController vc = (UserSummaryViewController)segue.DestinationViewController;
+				vc.TargetUser = SayHiBootStrapper.CurrentUser;
+			}
 		}
 
-		
+		partial void onViewSignedInUser (MonoTouch.UIKit.UIButton sender)
+		{
+			PerformSegue (SayHiConstants.SHVCtoUSVC, this);
+		}
 
 		partial void onRegisterClicked (MonoTouch.UIKit.UIButton sender)
 		{
@@ -143,6 +161,7 @@ namespace SayHi
 		public override void ViewDidAppear (bool animated)
 		{
 			base.ViewDidAppear (animated);
+			Setup ();
 		}
 		
 		public override void ViewWillDisappear (bool animated)

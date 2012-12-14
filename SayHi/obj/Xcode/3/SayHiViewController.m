@@ -12,7 +12,6 @@
 @synthesize signedInHeaderLabel = _signedInHeaderLabel;
 @synthesize m_eventCodeBox = _m_eventCodeBox;
 @synthesize m_signedInUserButton = _m_signedInUserButton;
-@synthesize onsignedInUserClicked = _onsignedInUserClicked;
 
 - (IBAction)onViewSignedInUser:(UIButton *)sender {
 }
