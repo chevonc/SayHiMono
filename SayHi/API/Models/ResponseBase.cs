@@ -11,7 +11,8 @@ namespace SayHi
 
 		public ResponseBase (bool isSuccess, string message)
 		{
-
+			IsSucess = isSuccess;
+			Message = message;
 		}
 
 		public bool IsSucess {

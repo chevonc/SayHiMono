@@ -172,6 +172,7 @@ namespace SayHi.API
 
 		public void GetEventInfo (string eventCode)
 		{
+
 			string json = ParamsToJSON ("event_code", eventCode ?? string.Empty);
 			SayHiRestClient syrc = new SayHiRestClient (SayHiRestClient.HTTPPOSTMETHOD, CreateEndpointURL (GetEventInfoPath),
 			                                           json);

@@ -39,7 +39,7 @@ namespace SayHi
 			SayHiHelper sh = new SayHi.API.SayHiHelper ();
 			sh.OnRegisterUserCompleted += HandleOnRegisterUserCompleted;
 			sh.RegisterUser (emailAddressTextField.Text, passwordTextField.Text, firstNameTextField.Text,
-			                lastNameTextField.Text, emailAddressTextField.Text, "", "", interest1TextField.Text,
+			                lastNameTextField.Text, emailAddressTextField.Text, "2012-12-12", "", interest1TextField.Text,
 			                interest2TextField.Text);
 		}
 
@@ -49,6 +49,7 @@ namespace SayHi
 			{
 				//take back to detail screen of event
 				//override prepare for segue so that i can show checkin button
+				//PerformSegue(SayHiConstants.)
 			}
 			else
 			if (Mode == RegistrationMode.HomePageDestination)
