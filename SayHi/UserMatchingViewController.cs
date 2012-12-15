@@ -81,21 +81,28 @@ namespace SayHi
 
 				if (obj.IsSucess)
 				{
-					m_lastMatchedUser = obj;
-					m_bottomCaption.Hidden = m_topCaption.Hidden = true;
-					m_placeHolderImageButton.Hidden = true;
+					try
+					{
+						m_lastMatchedUser = obj;
+						m_bottomCaption.Hidden = m_topCaption.Hidden = true;
+						m_placeHolderImageButton.Hidden = true;
 
-					//load ui elements with data;
-					m_matchedUsersName.Text = string.Format ("{0} {1}", m_lastMatchedUser.FirstName, m_lastMatchedUser.LastName);
-					m_matchedUsersInterest1.Text = m_lastMatchedUser.InterestOne;
-					m_matchedUsersInterest2.Text = m_lastMatchedUser.InterestTwo;
-					m_matchedUsersSummary.Text = m_lastMatchedUser.Summary;
+						//load ui elements with data;
+						m_matchedUsersName.Text = string.Format ("{0} {1}", m_lastMatchedUser.FirstName, m_lastMatchedUser.LastName);
+						m_matchedUsersInterest1.Text = m_lastMatchedUser.InterestOne;
+						m_matchedUsersInterest2.Text = m_lastMatchedUser.InterestTwo;
+						m_matchedUsersSummary.Text = m_lastMatchedUser.Summary;
 
-					m_matchedUsersImage.Hidden = false;
-					m_matchedUsersName.Hidden = false;
-					m_matchedUsersInterest1.Hidden = false;
-					m_matchedUsersInterest2.Hidden = false;
-					m_matchedUsersSummary.Hidden = false;
+						m_matchedUsersImage.Hidden = false;
+						m_matchedUsersName.Hidden = false;
+						m_matchedUsersInterest1.Hidden = false;
+						m_matchedUsersInterest2.Hidden = false;
+						m_matchedUsersSummary.Hidden = false;
+					}
+					catch
+					{
+
+					}
 				}
 				else
 				{
