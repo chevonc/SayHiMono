@@ -419,7 +419,7 @@ namespace SayHi.API
 
 							while (jtr.Read())
 							{
-								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "match_name"))
+								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "matchName"))
 								{
 									string name = jtr.ReadAsString ();
 									if (name != null)
@@ -433,7 +433,7 @@ namespace SayHi.API
 									}
 								}
 								else
-								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "match_summary"))
+								if (JsonKeyMatches (jtr, JsonToken.PropertyName, "matchSummary"))
 								{
 									ret.Summary = jtr.ReadAsString ();
 								}
